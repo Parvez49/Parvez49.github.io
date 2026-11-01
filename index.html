@@ -109,9 +109,11 @@
   .plinks a:hover{color:var(--amber)}
 
   /* ======= project media (screenshots / demo clips) ======= */
-  .media{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;max-width:56ch}
-  .media img,.media video{max-width:100%;border:1.5px solid var(--line);display:block}
+  .media{margin-top:16px;max-width:56ch}
+  .media img,.media video{max-width:100%;height:auto;border:1.5px solid var(--line);display:block}
   .media iframe{width:100%;aspect-ratio:16/9;border:1.5px solid var(--line)}
+  .media a{display:block;line-height:0}
+  .media .cap{color:var(--dim);font-size:.8rem;margin-top:6px;line-height:1.5}
 
   /* svg shared */
   .box{fill:var(--blue);stroke:var(--dim);stroke-width:1.2}
@@ -272,13 +274,14 @@
               to one Django API with Celery workers handling dispatch and notifications.</p>
             <p class="spec"><b>Built:</b> all four amber boxes — both mobile apps, the dashboard,
               and the API. <b>Spec:</b> DRF, PostgreSQL, Celery, Redis, push notifications.</p>
-            <!-- Media: drop files in assets/img or assets/video, then uncomment.
             <div class="media">
-              <img src="assets/img/victoria-dashboard.webp" alt="Victoria Express operations dashboard" loading="lazy">
-              <video src="assets/video/victoria-demo.mp4" muted autoplay loop playsinline></video>
+              <a href="assets/img/victoria-delivery-workflow.webp" target="_blank" rel="noopener">
+                <img src="assets/img/victoria-delivery-workflow.webp"
+                     alt="Victoria Express delivery workflow: merchant pickup request in the Flutter app, admin assigns a rider from the Next.js panel, rider submits to hub with QR scan, hub-to-hub transfer, final delivery confirmation"
+                     loading="lazy" width="1536" height="1024">
+              </a>
+              <p class="cap">Pickup request → rider assignment → hub transfer → delivery, across all three apps. Click to enlarge.</p>
             </div>
-            <p class="plinks"><a href="https://www.youtube.com/watch?v=VIDEO_ID">Demo video</a></p>
-            -->
           </div>
         </article>
 
@@ -307,11 +310,14 @@
               model call; it's what the system does when the model is confidently wrong.</p>
             <p class="spec"><b>Built:</b> storefront app, API, and the RAG layer with typed error
               handling and WebSocket progress streaming. <b>Spec:</b> Django, pgvector, embeddings, Flutter.</p>
-            <!-- Media: drop files in assets/img or assets/video, then uncomment.
             <div class="media">
-              <img src="assets/img/grocerai-app.webp" alt="GrocerAI Flutter app — AI cart building" loading="lazy">
+              <a href="assets/img/grocerai-user-flow.webp" target="_blank" rel="noopener">
+                <img src="assets/img/grocerai-user-flow.webp"
+                     alt="GrocerAI app user flow in six screens: set dietary and household preferences, home dashboard with credit balance, new order, AI finding the best grocery deals, comparing grocers, and checkout with pickup or delivery"
+                     loading="lazy" width="1774" height="887">
+              </a>
+              <p class="cap">Preferences → AI cart building → grocer comparison → checkout, in the Flutter app. Click to enlarge.</p>
             </div>
-            -->
           </div>
         </article>
 

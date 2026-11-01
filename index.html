@@ -1,31 +1,483 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%- metaTitle %></title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parvez Hossen — Full-Stack Engineer · Django · Next.js · Flutter</title>
+<meta name="description" content="Parvez Hossen — software engineer in Dhaka shipping complete systems end to end: Django/DRF APIs on PostgreSQL, Next.js dashboards, Flutter apps. Portfolio, experience and CV.">
+<link rel="canonical" href="https://parvez49.github.io/">
+<meta property="og:title" content="Parvez Hossen — Full-Stack Engineer">
+<meta property="og:description" content="Every product here is drawn end to end — Django APIs, Next.js dashboards, Flutter apps, data model to production.">
+<meta property="og:url" content="https://parvez49.github.io/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23173A63'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='30' font-weight='700' fill='%23F5B841' text-anchor='middle'%3EPH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#173A63;        /* blueprint paper */
+    --blue-deep:#122E4F;
+    --line:#3E6285;        /* drafting lines */
+    --line-faint:#27496E;  /* background grid */
+    --chalk:#DCE9F5;       /* primary text */
+    --dim:#8FB0CC;         /* secondary text */
+    --amber:#F5B841;       /* the one highlight: what I built */
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 23px, var(--line-faint) 23px 24px),
+      repeating-linear-gradient(90deg, transparent 0 23px, var(--line-faint) 23px 24px),
+      var(--blue);
+    color:var(--chalk); font-size:16.5px; line-height:1.6;
+  }
+  a{color:var(--chalk)}
+  a:focus-visible,button:focus-visible,td:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-    <meta property="title" content="<%- metaTitle %>" />
-    <meta name="description" content="<%- metaDescription %>" />
+  /* ======= sheet frame (engineering drawing border) ======= */
+  .sheet{
+    max-width:1160px;margin:26px auto;border:2px solid var(--chalk);
+    box-shadow:0 0 0 1px var(--blue), 0 0 0 3px var(--line);
+    background:rgba(18,46,79,.35);
+  }
+  @media(max-width:1200px){.sheet{margin:0;border-left:none;border-right:none}}
 
-    <meta itemprop="name" content="<%- metaTitle %>" />
-    <meta itemprop="description" content="<%- metaDescription %>" />
-    <meta itemprop="image" content="<%- metaImageURL %>" />
+  /* ======= top strip ======= */
+  .strip{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1.5px solid var(--chalk);padding:14px 24px;font-size:.92rem
+  }
+  .strip .doc{color:var(--dim)}
+  .strip nav a{color:var(--dim);text-decoration:none;margin-left:22px}
+  .strip nav a:hover{color:var(--amber)}
 
-    <meta property="og:title" content="<%- metaTitle %>" />
-    <meta property="og:description" content="<%- metaDescription %>" />
-    <meta property="og:image" content="<%- metaImageURL %>" />
-    <meta property="og:image:secure_url" content="<%- metaImageURL %>" />
+  /* ======= hero ======= */
+  .hero{padding:72px 0 40px}
+  .hero h1{
+    font-size:clamp(2.1rem,5vw,3.4rem);font-weight:700;line-height:1.1;
+    letter-spacing:-.015em;max-width:22ch
+  }
+  .hero h1 .amber{color:var(--amber)}
+  .hero p.sub{margin-top:22px;max-width:60ch;color:var(--dim);font-size:1.05rem}
+  .hero p.sub b{color:var(--chalk);font-weight:600}
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="<%- metaTitle %>" />
-    <meta name="twitter:description" content="<%- metaDescription %>" />
-    <meta name="twitter:image" content="<%- metaImageURL %>" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  /* ======= the delivery matrix ======= */
+  .matrix{margin:46px 0 8px;overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:760px}
+  caption{text-align:left;color:var(--dim);font-size:.9rem;margin-bottom:12px}
+  caption b{color:var(--amber);font-weight:600}
+  th,td{border:1px solid var(--line);padding:10px 14px;font-size:.95rem;text-align:left}
+  thead th{font-weight:600;background:var(--blue-deep)}
+  thead th a{text-decoration:none}
+  thead th a:hover{color:var(--amber)}
+  tbody th{font-weight:500;color:var(--dim);white-space:nowrap;background:var(--blue-deep)}
+  td{color:var(--dim)}
+  td.built{
+    background:var(--amber);color:var(--blue-deep);font-weight:600;cursor:pointer;
+  }
+  td.built:hover{filter:brightness(1.1)}
+  td.off{color:var(--line)}
+  .matrix-hint{color:var(--dim);font-size:.85rem;margin-top:10px}
+
+  /* ======= sections ======= */
+  section{border-top:1.5px solid var(--chalk);padding:56px 0}
+  .sechead{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sechead h2{font-size:1.5rem;font-weight:600}
+  .sechead .rule{flex:1;border-top:1px dashed var(--line)}
+  .sechead .fig{color:var(--dim);font-size:.85rem;white-space:nowrap}
+
+  /* ======= project drawings ======= */
+  .drawing{
+    display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:40px;
+    padding:34px 0;border-top:1px dashed var(--line)
+  }
+  .drawing:first-of-type{border-top:none;padding-top:0}
+  .diagram{border:1.5px solid var(--line);background:var(--blue-deep);padding:10px}
+  .diagram svg{display:block;width:100%;height:auto}
+  .diagram .cap{color:var(--dim);font-size:.8rem;padding:8px 6px 2px;border-top:1px dashed var(--line);margin-top:8px}
+  .drawing h3{font-size:1.3rem;font-weight:600}
+  .drawing .role{color:var(--dim);font-size:.92rem}
+  .drawing p.desc{margin-top:14px;max-width:56ch}
+  .drawing .spec{margin-top:14px;color:var(--dim);font-size:.9rem;max-width:56ch}
+  .drawing .spec b{color:var(--amber);font-weight:600}
+  .plinks{margin-top:14px}
+  .plinks a{margin-right:20px;font-weight:600;text-decoration-color:var(--amber)}
+  .plinks a:hover{color:var(--amber)}
+
+  /* ======= project media (screenshots / demo clips) ======= */
+  .media{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;max-width:56ch}
+  .media img,.media video{max-width:100%;border:1.5px solid var(--line);display:block}
+  .media iframe{width:100%;aspect-ratio:16/9;border:1.5px solid var(--line)}
+
+  /* svg shared */
+  .box{fill:var(--blue);stroke:var(--dim);stroke-width:1.2}
+  .box.mine{fill:var(--amber);stroke:none}
+  text{font-family:'Space Grotesk',sans-serif;font-size:11.5px;fill:var(--chalk)}
+  .mine + text, text.dark{fill:var(--blue-deep);font-weight:600}
+  .wire{stroke:var(--dim);stroke-width:1.2;fill:none;marker-end:url(#arr)}
+
+  /* ======= experience / skills ======= */
+  .job{display:grid;grid-template-columns:180px 1fr;gap:26px;padding:20px 0;border-top:1px dashed var(--line)}
+  .job:first-of-type{border-top:none}
+  .job .when{color:var(--dim);font-size:.92rem}
+  .job h3{font-size:1.05rem;font-weight:600}
+  .job .org{color:var(--dim);font-weight:400}
+  .job ul{margin:8px 0 0 18px;max-width:60ch;color:var(--dim)}
+  .job li{margin-top:6px}
+  .job li b{color:var(--chalk);font-weight:500}
+
+  /* ======= title block footer ======= */
+  .titleblock{border-top:2px solid var(--chalk)}
+  .tb{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;
+    border-bottom:1px solid var(--line)
+  }
+  .tb > div{padding:14px 18px;border-right:1px solid var(--line)}
+  .tb > div:last-child{border-right:none}
+  .tb .k{display:block;color:var(--dim);font-size:.75rem;margin-bottom:2px}
+  .tb .v{font-weight:600}
+  .tb .v a{text-decoration-color:var(--amber)}
+  .tb .v a:hover{color:var(--amber)}
+  .contactrow{padding:26px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+  .contactrow .cta{font-size:1.15rem;font-weight:600}
+  .btn{
+    display:inline-block;background:var(--amber);color:var(--blue-deep);font-weight:700;
+    padding:11px 22px;text-decoration:none;border:none;font-size:.98rem
+  }
+  .btn:hover{filter:brightness(1.08)}
+
+  @media(max-width:820px){
+    .drawing{grid-template-columns:1fr}
+    .job{grid-template-columns:1fr;gap:4px}
+    .tb{grid-template-columns:1fr 1fr}
+    .tb > div{border-bottom:1px solid var(--line)}
+    .hero{padding:48px 0 28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="strip">
+    <span class="doc">DWG № PH-2026 · PARVEZ HOSSEN · SOFTWARE ENGINEER</span>
+    <nav aria-label="Sections">
+      <a href="#work">Drawings</a>
+      <a href="#experience">Record</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <div class="wrap hero">
+      <h1>Every product here is drawn <span class="amber">end to end</span> — and I built each layer marked in amber.</h1>
+      <p class="sub">
+        I'm <b>Parvez Hossen</b>, a software engineer in Dhaka. For the last 3 years I've
+        shipped complete systems: <b>Django</b> services on PostgreSQL, <b>Next.js</b>
+        dashboards, <b>Flutter</b> apps — data model to deployment to the 2 a.m. production debugging.
+      </p>
+
+      <div class="matrix">
+        <table>
+          <caption>Fig. 1 — Delivery matrix. <b>Amber cells</b> are layers I designed and built. Click one to open the drawing.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Layer</th>
+              <th scope="col"><a href="#victoria">Victoria Express</a></th>
+              <th scope="col"><a href="#grocerai">GrocerAI</a></th>
+              <th scope="col"><a href="#b2024">Bangladesh2024</a></th>
+              <th scope="col"><a href="#jonnobhumi">Jonnobhumi</a></th>
+              <th scope="col"><a href="#mph">MPH</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Mobile · Flutter</th>
+              <td class="built" data-go="victoria" tabindex="0">2 apps</td>
+              <td class="built" data-go="grocerai" tabindex="0">storefront</td>
+              <td class="off">—</td>
+              <td class="off">—</td>
+              <td class="off">—</td>
+            </tr>
+            <tr>
+              <th scope="row">Web · Next.js</th>
+              <td class="built" data-go="victoria" tabindex="0">ops dashboard</td>
+              <td class="off">—</td>
+              <td class="built" data-go="b2024" tabindex="0">public archive</td>
+              <td class="built" data-go="jonnobhumi" tabindex="0">user + admin</td>
+              <td class="built" data-go="mph" tabindex="0">admin</td>
+            </tr>
+            <tr>
+              <th scope="row">API · Django/DRF</th>
+              <td class="built" data-go="victoria" tabindex="0">logistics API</td>
+              <td class="built" data-go="grocerai" tabindex="0">commerce + RAG</td>
+              <td class="built" data-go="b2024" tabindex="0">HLS pipeline</td>
+              <td class="built" data-go="jonnobhumi" tabindex="0">authz engine</td>
+              <td class="built" data-go="mph" tabindex="0">10× redesign</td>
+            </tr>
+            <tr>
+              <th scope="row">Data · PostgreSQL</th>
+              <td class="built" data-go="victoria" tabindex="0">+ Redis, Celery</td>
+              <td class="built" data-go="grocerai" tabindex="0">+ pgvector</td>
+              <td class="built" data-go="b2024" tabindex="0">pHash dedup</td>
+              <td class="built" data-go="jonnobhumi" tabindex="0">audit triggers</td>
+              <td class="built" data-go="mph" tabindex="0">FTS + GIN</td>
+            </tr>
+            <tr>
+              <th scope="row">Ops · Docker/CI</th>
+              <td class="built" data-go="victoria" tabindex="0">deployed</td>
+              <td class="built" data-go="grocerai" tabindex="0">deployed</td>
+              <td class="built" data-go="b2024" tabindex="0">CDN + CI</td>
+              <td class="built" data-go="jonnobhumi" tabindex="0">deployed</td>
+              <td class="built" data-go="mph" tabindex="0">+ Grafana</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="matrix-hint">21 of 25 cells amber. That's the pitch.</p>
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="sechead"><h2>The drawings</h2><span class="rule"></span><span class="fig">Fig. 2 – 6</span></div>
+
+        <article class="drawing" id="victoria">
+          <div class="diagram">
+            <svg viewBox="0 0 400 210" role="img" aria-label="Victoria Express architecture: merchant and rider Flutter apps and a Next.js dashboard all calling one Django API backed by PostgreSQL and Redis">
+              <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8FB0CC"/></marker></defs>
+              <rect class="box mine" x="10" y="14" width="102" height="34"/><text x="61" y="35" text-anchor="middle" class="dark">Merchant app</text>
+              <rect class="box mine" x="10" y="88" width="102" height="34"/><text x="61" y="109" text-anchor="middle" class="dark">Rider app</text>
+              <rect class="box mine" x="10" y="162" width="102" height="34"/><text x="61" y="183" text-anchor="middle" class="dark">Ops dashboard</text>
+              <rect class="box mine" x="168" y="88" width="96" height="34"/><text x="216" y="109" text-anchor="middle" class="dark">Django API</text>
+              <rect class="box" x="316" y="52" width="74" height="34"/><text x="353" y="73" text-anchor="middle">PostgreSQL</text>
+              <rect class="box" x="316" y="126" width="74" height="34"/><text x="353" y="147" text-anchor="middle">Redis · Celery</text>
+              <path class="wire" d="M112 31 H140 V100 H164"/>
+              <path class="wire" d="M112 105 H164"/>
+              <path class="wire" d="M112 179 H140 V110 H164"/>
+              <path class="wire" d="M264 98 H290 V69 H312"/>
+              <path class="wire" d="M264 112 H290 V143 H312"/>
+            </svg>
+            <p class="cap">Fig. 2 — Victoria Express. Amber boxes: built by me. One API, three clients.</p>
+          </div>
+          <div>
+            <h3>Victoria Express</h3>
+            <p class="role">Courier &amp; logistics platform</p>
+            <p class="desc">A delivery business that runs on this system daily: merchants book
+              parcels from one Flutter app, riders pick up and track from another, and the
+              operations team routes everything through a Next.js dashboard — all speaking
+              to one Django API with Celery workers handling dispatch and notifications.</p>
+            <p class="spec"><b>Built:</b> all four amber boxes — both mobile apps, the dashboard,
+              and the API. <b>Spec:</b> DRF, PostgreSQL, Celery, Redis, push notifications.</p>
+            <!-- Media: drop files in assets/img or assets/video, then uncomment.
+            <div class="media">
+              <img src="assets/img/victoria-dashboard.webp" alt="Victoria Express operations dashboard" loading="lazy">
+              <video src="assets/video/victoria-demo.mp4" muted autoplay loop playsinline></video>
+            </div>
+            <p class="plinks"><a href="https://www.youtube.com/watch?v=VIDEO_ID">Demo video</a></p>
+            -->
+          </div>
+        </article>
+
+        <article class="drawing" id="grocerai">
+          <div class="diagram">
+            <svg viewBox="0 0 400 210" role="img" aria-label="GrocerAI architecture: Flutter storefront calling a Django API with a RAG layer over pgvector, with an external LLM behind a guardrail">
+              <rect class="box mine" x="10" y="88" width="96" height="34"/><text x="58" y="109" text-anchor="middle" class="dark">Flutter store</text>
+              <rect class="box mine" x="152" y="88" width="92" height="34"/><text x="198" y="109" text-anchor="middle" class="dark">Django API</text>
+              <rect class="box mine" x="152" y="152" width="92" height="34"/><text x="198" y="173" text-anchor="middle" class="dark">RAG layer</text>
+              <rect class="box" x="298" y="152" width="92" height="34"/><text x="344" y="173" text-anchor="middle">pgvector</text>
+              <rect class="box" x="298" y="24" width="92" height="34"/><text x="344" y="45" text-anchor="middle">LLM (external)</text>
+              <path class="wire" d="M106 105 H148"/>
+              <path class="wire" d="M198 122 V148"/>
+              <path class="wire" d="M244 169 H294"/>
+              <path class="wire" d="M244 98 H270 V41 H294"/>
+              <text x="252" y="76" font-size="10" fill="#8FB0CC">guardrail</text>
+            </svg>
+            <p class="cap">Fig. 3 — GrocerAI. The model is outside the trust boundary; the RAG layer decides what it sees.</p>
+          </div>
+          <div>
+            <h3>GrocerAI (Grocento)</h3>
+            <p class="role">AI-assisted grocery commerce</p>
+            <p class="desc">Grocery shopping with an LLM in the loop — retrieval and grounding
+              over the live product catalogue with embeddings and vector search, so the
+              assistant recommends real items in stock. The interesting problem isn't the
+              model call; it's what the system does when the model is confidently wrong.</p>
+            <p class="spec"><b>Built:</b> storefront app, API, and the RAG layer with typed error
+              handling and WebSocket progress streaming. <b>Spec:</b> Django, pgvector, embeddings, Flutter.</p>
+            <!-- Media: drop files in assets/img or assets/video, then uncomment.
+            <div class="media">
+              <img src="assets/img/grocerai-app.webp" alt="GrocerAI Flutter app — AI cart building" loading="lazy">
+            </div>
+            -->
+          </div>
+        </article>
+
+        <article class="drawing" id="b2024">
+          <div class="diagram">
+            <svg viewBox="0 0 400 210" role="img" aria-label="Bangladesh2024 Archive architecture: contributor uploads flow into a Django API, through a Celery and FFmpeg pipeline to an HLS CDN and a perceptual-hash dedup service, serving a bilingual Next.js archive">
+              <rect class="box" x="10" y="40" width="96" height="34"/><text x="58" y="61" text-anchor="middle">Contributor</text>
+              <rect class="box mine" x="10" y="152" width="96" height="34"/><text x="58" y="173" text-anchor="middle" class="dark">Next.js archive</text>
+              <rect class="box mine" x="152" y="88" width="92" height="46"/><text x="198" y="106" text-anchor="middle" class="dark">Django API</text><text x="198" y="122" text-anchor="middle" class="dark" font-size="10">30+ models · mod queue</text>
+              <rect class="box mine" x="298" y="24" width="92" height="34"/><text x="344" y="45" text-anchor="middle" class="dark">Celery · FFmpeg</text>
+              <rect class="box" x="298" y="96" width="92" height="34"/><text x="344" y="117" text-anchor="middle">HLS → CDN</text>
+              <rect class="box mine" x="298" y="168" width="92" height="34"/><text x="344" y="189" text-anchor="middle" class="dark">pHash dedup</text>
+              <path class="wire" d="M106 57 H128 V98 H148"/>
+              <path class="wire" d="M244 98 H270 V41 H294"/>
+              <path class="wire" d="M344 62 V92"/>
+              <path class="wire" d="M244 122 H270 V185 H294"/>
+              <path class="wire" d="M152 122 H128 V169 H110"/>
+            </svg>
+            <p class="cap">Fig. 4 — Bangladesh2024 Archive. Every video becomes a 4-rendition HLS ladder; every photo gets a pHash before a moderator sees it.</p>
+          </div>
+          <div>
+            <h3>Bangladesh2024 Archive</h3>
+            <p class="role">Open-source public human-rights archive · lead backend developer</p>
+            <p class="desc">A permanent, bilingual public record of Bangladesh's July–August 2024
+              movement — martyrs, injured, arrested, incidents, news, podcasts, protest graffiti.
+              Anyone can submit a record; a moderation workflow reviews it; approved records join
+              the searchable archive. I wrote ~230 of the backend's 255 commits and contributed
+              to the Next.js frontend.</p>
+            <p class="spec"><b>Built:</b> the REST API (30+ models, 5 Django apps), the Celery + FFmpeg
+              pipeline transcoding every video to 4-rendition adaptive HLS on a CDN, perceptual-hash
+              deduplication with a Hamming-distance similarity graph, a polymorphic moderation audit
+              trail, JWT + OTP auth, and Bengali-language bulk ETL.
+              <b>Spec:</b> Django, DRF, Celery, PostgreSQL, Redis, FFmpeg/HLS, Next.js 14, DO Spaces CDN.</p>
+            <p class="plinks">
+              <a href="https://bangladesh2024.info/" target="_blank" rel="noopener">Live archive</a>
+              <a href="https://github.com/Archive2024/Bangladesh2024-Backend" target="_blank" rel="noopener">Backend source</a>
+              <a href="https://github.com/Archive2024/Bangladesh2024-Frontend" target="_blank" rel="noopener">Frontend source</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="drawing" id="jonnobhumi">
+          <div class="diagram">
+            <svg viewBox="0 0 400 210" role="img" aria-label="Jonnobhumi architecture: user and admin Next.js sites calling a Django API through an authorization engine, with a tamper-proof audit log enforced by PostgreSQL triggers">
+              <rect class="box mine" x="10" y="40" width="96" height="34"/><text x="58" y="61" text-anchor="middle" class="dark">User site</text>
+              <rect class="box mine" x="10" y="136" width="96" height="34"/><text x="58" y="157" text-anchor="middle" class="dark">Admin site</text>
+              <rect class="box mine" x="152" y="88" width="92" height="34"/><text x="198" y="103" text-anchor="middle" class="dark">Authz engine</text><text x="198" y="116" text-anchor="middle" class="dark">11r · 57p</text>
+              <rect class="box mine" x="298" y="52" width="92" height="34"/><text x="344" y="73" text-anchor="middle" class="dark">Django API</text>
+              <rect class="box" x="298" y="140" width="92" height="46"/><text x="344" y="158" text-anchor="middle">Audit log</text><text x="344" y="174" text-anchor="middle" font-size="10">pg trigger · append-only</text>
+              <path class="wire" d="M106 57 H128 V98 H148"/>
+              <path class="wire" d="M106 153 H128 V112 H148"/>
+              <path class="wire" d="M244 98 H270 V69 H294"/>
+              <path class="wire" d="M320 86 V136"/>
+            </svg>
+            <p class="cap">Fig. 5 — Jonnobhumi. Every mutation lands in an append-only audit log the app itself cannot rewrite.</p>
+          </div>
+          <div>
+            <h3>Jonnobhumi</h3>
+            <p class="role">Property transaction platform</p>
+            <p class="desc">Listings and transactions with separate user and admin frontends.
+              The part I'd defend in a design review: a policy-based authorization engine —
+              11 roles, 57 permissions, DENY-wins evaluation, Redis-cached — and an audit
+              trail recording actor, before/after diffs, IP and request ID, made tamper-proof
+              by a PostgreSQL trigger so the record survives a compromised application path.</p>
+            <p class="spec"><b>Built:</b> both frontends, the API, and the authorization/audit
+              subsystem. <b>Spec:</b> DRF, PostgreSQL triggers, Redis, Next.js, TypeScript.</p>
+          </div>
+        </article>
+
+        <article class="drawing" id="mph">
+          <div class="diagram">
+            <svg viewBox="0 0 400 210" role="img" aria-label="MPH architecture: Next.js admin calling a redesigned Django API on PostgreSQL full-text search, observed by Prometheus and Grafana">
+              <rect class="box mine" x="10" y="88" width="96" height="34"/><text x="58" y="109" text-anchor="middle" class="dark">Next.js admin</text>
+              <rect class="box mine" x="152" y="88" width="92" height="34"/><text x="198" y="103" text-anchor="middle" class="dark">Django API</text><text x="198" y="116" text-anchor="middle" class="dark">10× faster</text>
+              <rect class="box" x="298" y="88" width="92" height="46"/><text x="344" y="106" text-anchor="middle">PostgreSQL</text><text x="344" y="122" text-anchor="middle" font-size="10">tsvector · GIN</text>
+              <rect class="box" x="152" y="20" width="92" height="34"/><text x="198" y="41" text-anchor="middle">Prometheus</text>
+              <rect class="box" x="298" y="20" width="92" height="34"/><text x="344" y="41" text-anchor="middle">Grafana</text>
+              <path class="wire" d="M106 105 H148"/>
+              <path class="wire" d="M244 105 H294"/>
+              <path class="wire" d="M198 84 V58"/>
+              <path class="wire" d="M244 37 H294"/>
+            </svg>
+            <p class="cap">Fig. 6 — MPH. Regressions surface on a dashboard, not in a support ticket.</p>
+          </div>
+          <div>
+            <h3>MPH</h3>
+            <p class="role">B2B warehouse management</p>
+            <p class="desc">Inventory and order management for a B2B warehouse. I redesigned
+              the Django/PostgreSQL backend for a 10× performance improvement, moved search
+              to generated tsvector columns with weighted GIN indexes, and wired in
+              Prometheus and Grafana so the system reports on itself.</p>
+            <p class="spec"><b>Built:</b> API redesign, search, observability, admin frontend.
+              <b>Spec:</b> Django, PostgreSQL FTS, Prometheus, Grafana, Next.js.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="sechead"><h2>Record</h2><span class="rule"></span><span class="fig">revision history</span></div>
+        <div class="job">
+          <p class="when">Aug 2025 — Aug 2026</p>
+          <div>
+            <h3>Software Engineer <span class="org">· DevsMotion, Dhaka (part-time, remote)</span></h3>
+            <ul>
+              <li>Sole or lead engineer on <b>Jonnobhumi, GrocerAI and Victoria Express</b> — data model to production operations.</li>
+              <li><b>100+ pytest modules</b> on a Dockerized, CI-deployed stack; Nginx and GitHub Actions in production.</li>
+              <li>Async processing with Celery and Redis; WebSocket streaming over Django Channels.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when">Dec 2023 — Apr 2026</p>
+          <div>
+            <h3>Software Engineer <span class="org">· Merchantbay, Dhaka</span></h3>
+            <ul>
+              <li>Warehouse management modules — purchase planning, stock entry, inventory tracking, unit conversion — on <b>Django/DRF and PostgreSQL</b>.</li>
+              <li>AI fashion-sourcing platform: <b>FastAPI RAG</b> over a product corpus with locally hosted LLMs (Ollama).</li>
+              <li>Client project (Adzi Trims): backend redesign for a <b>10× performance improvement</b>, with Prometheus and Grafana monitoring.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when">Nov 2024 — Jul 2026</p>
+          <div>
+            <h3>Lead Backend Developer <span class="org">· Bangladesh2024 Archive (open source)</span></h3>
+            <ul>
+              <li><b>~230 of 255 backend commits</b>: video pipeline, deduplication, moderation workflow, auth, Bengali data ingestion — see Fig. 4.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when">Foundation</p>
+          <div>
+            <h3>B.Sc. Computer Science &amp; Engineering <span class="org">· DUET, Gazipur · 2018 — 2023</span></h3>
+            <ul>
+              <li><b>800+ problems</b> solved on LeetCode and Codeforces — the algorithmic base under the architecture.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="titleblock" id="contact">
+    <div class="contactrow">
+      <span class="cta">Need someone who can own the whole drawing?</span>
+      <a class="btn" href="mailto:ph.cse.bd@gmail.com">Write to me</a>
+    </div>
+    <div class="tb">
+      <div><span class="k">Drawn by</span><span class="v">Parvez Hossen — Dhaka, Bangladesh</span></div>
+      <div><span class="k">Contact</span><span class="v"><a href="mailto:ph.cse.bd@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/parvez-hossen-knk/" target="_blank" rel="noopener">LinkedIn</a></span></div>
+      <div><span class="k">Source</span><span class="v"><a href="https://github.com/Parvez49" target="_blank" rel="noopener">GitHub</a></span></div>
+      <div><span class="k">CV</span><span class="v"><a href="cv/Parvez_Hossen_CV_Backend.pdf">Backend</a> · <a href="cv/Parvez_Hossen_CV_Backend_AI.pdf">AI</a> · <a href="cv/Parvez_Hossen_CV_FullStack.pdf">Full-stack</a> · <a href="cv/Parvez_Hossen_CV_Mobile.pdf">Mobile</a></span></div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('td.built').forEach(td => {
+    const go = () => document.getElementById(td.dataset.go)?.scrollIntoView({behavior:'smooth'});
+    td.addEventListener('click', go);
+    td.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();go();} });
+  });
+</script>
+</body>
 </html>

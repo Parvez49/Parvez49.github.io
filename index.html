@@ -137,6 +137,13 @@
   .media a{display:block;line-height:0}
   .media .cap{color:var(--dim);font-size:.8rem;margin-top:6px;line-height:1.5}
 
+  /* ======= screenshot strips (real app screens, horizontal scroll) ======= */
+  .shots{margin-top:14px;max-width:56ch}
+  .shots .row{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-color:var(--line) transparent}
+  .shots a{flex:0 0 auto;line-height:0}
+  .shots img{height:180px;width:auto;border:1.5px solid var(--line);display:block}
+  .shots .cap{color:var(--dim);font-size:.8rem;margin-top:4px;line-height:1.5}
+
   /* svg shared */
   .box{fill:var(--blue);stroke:var(--dim);stroke-width:1.2}
   .box.mine{fill:var(--amber);stroke:none}
@@ -304,6 +311,20 @@
               </a>
               <p class="cap">Pickup request → rider assignment → hub transfer → delivery, across all three apps. Click to enlarge.</p>
             </div>
+            <div class="shots">
+              <div class="row">
+                <a href="assets/img/shots/victoria-merchant-dashboard.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-merchant-dashboard.webp" alt="Merchant app home: wallet balance, pickup request, express delivery, fraud check and payments tiles" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-merchant-add-parcel.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-merchant-add-parcel.webp" alt="Merchant app add-parcel form: service type, home delivery or pickup point, recipient and district fields" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-merchant-pickup.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-merchant-pickup.webp" alt="Merchant app pickup request screen with add parcel and pickup addresses" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-rider-dashboard.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-dashboard.webp" alt="Rider app home: delivered, pending and collected counters, parcel tracking by QR scan, pick requests and deposit report" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-rider-pickup.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-pickup.webp" alt="Rider app assigned pickup with merchant address, complete pickup, decline and failed actions" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-rider-delivery.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-delivery.webp" alt="Rider app delivery assignments list with COD amounts and statuses" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-rider-order-details.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-order-details.webp" alt="Rider app order details with cash-on-delivery amount, recipient contact actions and on-the-way status update" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-admin-pickups.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-admin-pickups.webp" alt="Next.js admin panel pickup requests queue" loading="lazy"></a>
+                <a href="assets/img/shots/victoria-admin-assign.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-admin-assign.webp" alt="Next.js admin panel rider assignment dialog" loading="lazy"></a>
+              </div>
+              <p class="cap">Real screens from the merchant app, rider app and admin panel — scroll, click to enlarge.</p>
+            </div>
           </div>
         </article>
 
@@ -339,6 +360,17 @@
                      loading="lazy" width="1774" height="887">
               </a>
               <p class="cap">Preferences → AI cart building → grocer comparison → checkout, in the Flutter app. Click to enlarge.</p>
+            </div>
+            <div class="shots">
+              <div class="row">
+                <a href="assets/img/shots/grocerai-preferences.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-preferences.webp" alt="GrocerAI preferences screen: nearby grocers, household size and dietary preference chips" loading="lazy"></a>
+                <a href="assets/img/shots/grocerai-dashboard.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-dashboard.webp" alt="GrocerAI home dashboard with last order, credit balance and monthly statement" loading="lazy"></a>
+                <a href="assets/img/shots/grocerai-new-order.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-new-order.webp" alt="GrocerAI new order questionnaire with receipt upload and participating grocery stores" loading="lazy"></a>
+                <a href="assets/img/shots/grocerai-agent.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-agent.webp" alt="GrocerAI agent progress screen streaming 'finding the best grocery deals for you' over WebSocket" loading="lazy"></a>
+                <a href="assets/img/shots/grocerai-cart.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-cart.webp" alt="AI-built cart for a store with quantities, per-item prices and swap-item actions" loading="lazy"></a>
+                <a href="assets/img/shots/grocerai-checkout.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-checkout.webp" alt="GrocerAI checkout with credit redemption, saved card, store pickup and delivery time slots" loading="lazy"></a>
+              </div>
+              <p class="cap">Real screens from the Flutter app — scroll, click to enlarge.</p>
             </div>
           </div>
         </article>

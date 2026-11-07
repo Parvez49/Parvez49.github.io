@@ -25,7 +25,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto};*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{
   margin:0;background:var(--bg);color:var(--text);
   font-family:'Outfit',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -89,11 +89,24 @@ a:focus-visible,button:focus-visible,article:focus-visible{outline:2px solid var
 .sc-3{bottom:24%;left:-6%}
 .sc-4{bottom:7%;right:-1%;background:rgba(21,42,86,.8)}
 
-/* stack strip */
+/* stack marquee */
 .strip{padding:70px 0 20px;text-align:center}
 .strip h6{margin:0 0 30px;font-size:14px;font-weight:400;color:var(--muted)}
-.strip-row{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;
-  font-size:23px;font-weight:600;letter-spacing:-.4px;color:#cdd6e4;opacity:.82}
+.marquee{position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:slide 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track ul{display:flex;align-items:center;gap:50px;list-style:none;margin:0;padding:0 25px}
+.marquee-track li{font-size:22px;font-weight:600;letter-spacing:-.4px;color:#cdd6e4;opacity:.78;
+  white-space:nowrap;transition:opacity .2s,color .2s}
+.marquee-track li:hover{opacity:1;color:#fff}
+.marquee-track li.ai{color:var(--blue-soft);opacity:.95}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .marquee{-webkit-mask-image:none;mask-image:none;overflow-x:auto}
+  .marquee-track ul:last-child{display:none}
+}
 
 /* projects */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
@@ -345,9 +358,9 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
         <div class="portrait-glow"></div>
         <div class="portrait"><img src="assets/img/parvez-portrait.webp" alt="Parvez Hossen" width="660" height="836" fetchpriority="high"></div>
         <div class="stat-chip sc-1"><b>3+</b><small>Years Shipping</small></div>
-        <div class="stat-chip sc-2"><b>5</b><small>Systems in Production</small></div>
-        <div class="stat-chip sc-3"><b>100+</b><small>Pytest Modules</small></div>
-        <div class="stat-chip sc-4"><b>800+</b><small>DSA Problems Solved</small></div>
+        <div class="stat-chip sc-2"><b>10+</b><small>Systems in Production</small></div>
+        <div class="stat-chip sc-3"><b>800+</b><small>DSA Problems Solved</small></div>
+        <div class="stat-chip sc-4"><b>3+</b><small>Clients Served</small></div>
       </div>
     </div>
   </header>
@@ -355,17 +368,31 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
 
 <div class="wrap strip">
   <h6>Built with:</h6>
-  <div class="strip-row">
-    <span>Django</span><span>PostgreSQL</span><span>Next.js</span>
-    <span>Flutter</span><span>Celery</span><span>Docker</span>
+  <div class="marquee">
+    <div class="marquee-track">
+      <ul>
+        <li class="ai">RAG</li><li class="ai">pgvector</li><li class="ai">Embeddings</li>
+        <li class="ai">Ollama</li><li class="ai">LLM Guardrails</li><li class="ai">FastAPI</li>
+        <li>Django</li><li>DRF</li><li>PostgreSQL</li><li>Celery</li><li>Redis</li>
+        <li>Next.js</li><li>TypeScript</li><li>Flutter</li><li>Docker</li>
+        <li>Prometheus</li><li>Grafana</li><li>Nginx</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li class="ai">RAG</li><li class="ai">pgvector</li><li class="ai">Embeddings</li>
+        <li class="ai">Ollama</li><li class="ai">LLM Guardrails</li><li class="ai">FastAPI</li>
+        <li>Django</li><li>DRF</li><li>PostgreSQL</li><li>Celery</li><li>Redis</li>
+        <li>Next.js</li><li>TypeScript</li><li>Flutter</li><li>Docker</li>
+        <li>Prometheus</li><li>Grafana</li><li>Nginx</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <section id="projects" class="wrap">
   <div class="sec-head">
     <h2>Recent Projects</h2>
-    <p>Five systems I designed and shipped — a public human-rights archive, logistics,
-      AI commerce, property transactions and warehouse operations.</p>
+    <p>Five of them in detail — a public human-rights archive, logistics, AI commerce,
+      property transactions and warehouse operations.</p>
   </div>
 
   <div class="proj-grid">
@@ -519,7 +546,7 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
   </div>
   <div class="stats-bar">
     <div><b>3+</b><small>Years Experience</small></div>
-    <div><b>5</b><small>Systems Shipped</small></div>
+    <div><b>10+</b><small>Systems Shipped</small></div>
     <div><b>100+</b><small>Pytest Modules</small></div>
     <div><b>800+</b><small>DSA Problems</small></div>
   </div>

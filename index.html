@@ -7,537 +7,917 @@
 <meta name="description" content="Parvez Hossen — software engineer in Dhaka shipping complete systems end to end: Django/DRF APIs on PostgreSQL, Next.js dashboards, Flutter apps. Portfolio, experience and CV.">
 <link rel="canonical" href="https://parvez49.github.io/">
 <meta property="og:title" content="Parvez Hossen — Full-Stack Engineer">
-<meta property="og:description" content="Every product here is drawn end to end — Django APIs, Next.js dashboards, Flutter apps, data model to production.">
+<meta property="og:description" content="From data model to deployment — Django services, Next.js dashboards and Flutter apps, built end to end and run in production.">
 <meta property="og:url" content="https://parvez49.github.io/">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23173A63'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='30' font-weight='700' fill='%23F5B841' text-anchor='middle'%3EPH%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="https://parvez49.github.io/assets/img/parvez-portrait.webp">
+<meta name="theme-color" content="#06070a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='30' font-weight='700' fill='%234b8dff' text-anchor='middle'%3EPH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --blue:#173A63;        /* blueprint paper */
-    --blue-deep:#122E4F;
-    --line:#3E6285;        /* drafting lines */
-    --line-faint:#27496E;  /* background grid */
-    --chalk:#DCE9F5;       /* primary text */
-    --dim:#8FB0CC;         /* secondary text */
-    --amber:#F5B841;       /* the one highlight: what I built */
-  }
-  *{box-sizing:border-box;margin:0}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{
-    font-family:'Space Grotesk',system-ui,sans-serif;
-    background:
-      repeating-linear-gradient(0deg, transparent 0 23px, var(--line-faint) 23px 24px),
-      repeating-linear-gradient(90deg, transparent 0 23px, var(--line-faint) 23px 24px),
-      var(--blue);
-    color:var(--chalk); font-size:16.5px; line-height:1.6;
-  }
-  a{color:var(--chalk)}
-  a:focus-visible,button:focus-visible,td:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+:root{
+  --bg:#06070a; --line:rgba(125,165,255,.13); --line-2:rgba(125,165,255,.22);
+  --blue:#2b6bff; --blue-2:#4b8dff; --blue-soft:#7fb0ff;
+  --text:#e8edf6; --muted:#8b97aa; --muted-2:#6b7686;
+  --radius:22px; --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto};*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Outfit',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(100% - 40px,var(--maxw));margin-inline:auto}
+section{padding:110px 0}
 
-  /* ======= sheet frame (engineering drawing border) ======= */
-  .sheet{
-    max-width:1160px;margin:26px auto;border:2px solid var(--chalk);
-    box-shadow:0 0 0 1px var(--blue), 0 0 0 3px var(--line);
-    background:rgba(18,46,79,.35);
-  }
-  @media(max-width:1200px){.sheet{margin:0;border-left:none;border-right:none}}
+.panel{background:linear-gradient(170deg,#101a2b 0%,#0a0e16 55%,#090c12 100%);border:1px solid var(--line);border-radius:var(--radius)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;
+  font-size:15px;font-weight:500;border:1px solid transparent;cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn-primary{background:linear-gradient(180deg,var(--blue-2),var(--blue));color:#fff;
+  box-shadow:0 8px 24px -10px rgba(43,107,255,.9),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(43,107,255,1)}
+.btn-ghost{background:rgba(255,255,255,.07);color:var(--text);border-color:rgba(255,255,255,.1)}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+a:focus-visible,button:focus-visible,article:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
 
-  /* ======= top strip ======= */
-  .strip{
-    display:flex;justify-content:space-between;align-items:center;
-    border-bottom:1.5px solid var(--chalk);padding:14px 24px;font-size:.92rem
-  }
-  .strip .doc{color:var(--dim)}
-  .strip nav a{color:var(--dim);text-decoration:none;margin-left:22px}
-  .strip nav a:hover{color:var(--amber)}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 54px}
+.sec-head h2{font-size:clamp(32px,4.2vw,46px);font-weight:500;letter-spacing:-.8px;margin:0 0 14px}
+.sec-head p{margin:0;color:var(--muted);font-size:17px;line-height:1.55}
+.chip{display:inline-block;padding:7px 15px;border-radius:999px;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.04);font-size:13px;color:#cfd9ea}
 
-  /* ======= hero ======= */
-  .hero{padding:72px 0 40px}
-  .hero h1{
-    font-size:clamp(2.1rem,5vw,3.4rem);font-weight:700;line-height:1.1;
-    letter-spacing:-.015em;max-width:22ch
-  }
-  .hero h1 .amber{color:var(--amber)}
-  .hero p.sub{margin-top:22px;max-width:60ch;color:var(--dim);font-size:1.05rem}
-  .hero p.sub b{color:var(--chalk);font-weight:600}
+/* nav */
+.navbar{position:sticky;top:18px;z-index:50;padding-top:18px}
+.nav{display:flex;align-items:center;gap:28px;padding:9px 9px 9px 26px;border-radius:999px;
+  background:rgba(14,19,30,.78);backdrop-filter:blur(18px);border:1px solid var(--line);
+  box-shadow:0 18px 40px -26px #000}
+.brand{font-weight:600;letter-spacing:1.4px;font-size:14px;text-transform:uppercase}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{font-size:13.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
+.nav ul a:hover{color:#fff}
+.nav .btn{padding:11px 24px;font-size:14px}
 
-  /* ======= tiny entrance animations (hero only, one-shot) ======= */
-  @media (prefers-reduced-motion: no-preference){
-    .hero h1,.hero p.sub,.matrix{animation:rise .6s ease-out both}
-    .hero p.sub{animation-delay:.15s}
-    .matrix{animation-delay:.3s}
-    .hero h1 .amber{position:relative;display:inline-block}
-    .hero h1 .amber::after{
-      content:"";position:absolute;left:0;bottom:.04em;height:3px;width:100%;
-      background:var(--amber);transform:scaleX(0);transform-origin:left;
-      animation:draw .6s cubic-bezier(.6,0,.2,1) .9s forwards
-    }
-    td.built{opacity:0;animation:ink .35s ease-out forwards}
-    td.built:nth-child(2){animation-delay:.55s}
-    td.built:nth-child(3){animation-delay:.65s}
-    td.built:nth-child(4){animation-delay:.75s}
-    td.built:nth-child(5){animation-delay:.85s}
-    td.built:nth-child(6){animation-delay:.95s}
-  }
-  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  @keyframes draw{to{transform:scaleX(1)}}
-  @keyframes ink{from{opacity:0}to{opacity:1}}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:72px 56px 64px;margin-top:26px}
+.hero::before{content:"";position:absolute;right:-6%;top:-30%;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(43,107,255,.34),rgba(43,107,255,0) 62%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,50px);font-weight:400;line-height:1.18;letter-spacing:-1px;margin:0 0 20px}
+.hero h1 b{display:block;font-weight:700;font-style:italic;letter-spacing:-1.4px}
+.hero .lede{margin:0 0 32px;color:var(--muted);font-size:17.5px;line-height:1.62;max-width:440px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.portrait-wrap{position:relative;min-height:420px;display:grid;place-items:center}
+.portrait-glow{position:absolute;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,#1d4ed8,#102a63 48%,rgba(10,16,30,0) 72%)}
+.portrait{position:relative;width:272px;height:344px;border-radius:146px 146px 24px 24px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 76%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 76%,transparent 100%)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.stat-chip{position:absolute;padding:13px 20px;border-radius:16px;background:rgba(16,24,40,.74);
+  backdrop-filter:blur(14px);border:1px solid rgba(140,180,255,.22);box-shadow:0 20px 40px -24px #000}
+.stat-chip b{display:block;font-size:26px;font-weight:600;letter-spacing:-.5px;line-height:1.1}
+.stat-chip small{font-size:11.5px;color:var(--muted)}
+.sc-1{top:12%;left:0}
+.sc-2{top:0;right:3%;background:rgba(21,42,86,.8)}
+.sc-3{bottom:24%;left:-6%}
+.sc-4{bottom:7%;right:-1%;background:rgba(21,42,86,.8)}
 
-  /* ======= the delivery matrix ======= */
-  .matrix{margin:46px 0 8px;overflow-x:auto}
-  table{border-collapse:collapse;width:100%;min-width:760px}
-  caption{text-align:left;color:var(--dim);font-size:.9rem;margin-bottom:12px}
-  caption b{color:var(--amber);font-weight:600}
-  th,td{border:1px solid var(--line);padding:10px 14px;font-size:.95rem;text-align:left}
-  thead th{font-weight:600;background:var(--blue-deep)}
-  thead th a{text-decoration:none}
-  thead th a:hover{color:var(--amber)}
-  tbody th{font-weight:500;color:var(--dim);white-space:nowrap;background:var(--blue-deep)}
-  td{color:var(--dim)}
-  td.built{
-    background:var(--amber);color:var(--blue-deep);font-weight:600;cursor:pointer;
-  }
-  td.built:hover{filter:brightness(1.1)}
-  td.off{color:var(--line)}
-  .matrix-hint{color:var(--dim);font-size:.85rem;margin-top:10px}
+/* stack strip */
+.strip{padding:70px 0 20px;text-align:center}
+.strip h6{margin:0 0 30px;font-size:14px;font-weight:400;color:var(--muted)}
+.strip-row{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;
+  font-size:23px;font-weight:600;letter-spacing:-.4px;color:#cdd6e4;opacity:.82}
 
-  /* ======= sections ======= */
-  section{border-top:1.5px solid var(--chalk);padding:56px 0}
-  .sechead{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
-  .sechead h2{font-size:1.5rem;font-weight:600}
-  .sechead .rule{flex:1;border-top:1px dashed var(--line)}
-  .sechead .fig{color:var(--dim);font-size:.85rem;white-space:nowrap}
+/* projects */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.proj{background:linear-gradient(170deg,#0f1725,#090c12);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  transition:transform .22s ease,border-color .22s ease}
+.proj:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.proj-wide{grid-column:1 / -1;display:grid;grid-template-columns:1.05fr 1fr}
+.shot{position:relative;height:250px;overflow:hidden;background:#05070c;border-bottom:1px solid rgba(255,255,255,.04)}
+.proj-wide .shot{height:100%;min-height:330px;border-bottom:0;border-right:1px solid rgba(255,255,255,.04)}
+.shot>img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(.74) contrast(1.06) saturate(.72)}
+.shot::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(18,45,110,.42),rgba(8,14,28,.28));mix-blend-mode:soft-light}
+.shot-mobile{background:radial-gradient(95% 120% at 50% 118%,#1f55e0,#070a11 68%)}
+.phones{position:absolute;inset:34px 0 0 0;display:flex;justify-content:center;gap:16px;z-index:1}
+.phones img{width:106px;height:188px;object-fit:cover;object-position:top center;border-radius:14px;
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 26px 50px -20px #000}
+.phones img:first-child{transform:rotate(-4deg) translateY(8px)}
+.phones img:last-child{transform:rotate(4deg)}
+.shot-bar{position:absolute;inset:0 0 auto 0;height:28px;z-index:2;display:flex;align-items:center;gap:6px;
+  padding:0 12px;background:linear-gradient(180deg,rgba(8,12,20,.95),rgba(8,12,20,.55))}
+.shot-bar i{width:7px;height:7px;border-radius:50%;background:#2f3a4d;display:block}
+.shot::after{content:"";position:absolute;inset:auto 0 0 0;height:90px;
+  background:linear-gradient(180deg,rgba(9,12,18,0),rgba(9,12,18,.95))}
+.proj-wide .shot::after{display:none}
+.shot-mock::before,.shot-mock::after{display:none}
+.mockui{position:absolute;inset:28px 0 0 0;padding:22px 26px;
+  background:radial-gradient(120% 90% at 50% 120%,rgba(43,107,255,.55),rgba(5,8,14,0) 65%),#070a11}
+.mockui h5{margin:0 0 6px;font-size:19px;font-weight:600;letter-spacing:-.3px;color:#e6edfa}
+.mockui>p{margin:0 0 16px;font-size:11.5px;color:#7e8ca2}
+.mockui .rows{display:grid;gap:7px}
+.mockui .rows i{display:block;height:9px;border-radius:4px;background:rgba(255,255,255,.07)}
+.mockui .rows i:nth-child(2){width:78%}
+.mockui .rows i:nth-child(3){width:88%}
+.mockui .rows i:nth-child(4){width:64%}
+.proj-wide .mockui{display:flex;flex-direction:column;justify-content:center}
+.mockui .pill{position:absolute;top:22px;right:26px;padding:6px 14px;border-radius:999px;
+  background:linear-gradient(180deg,var(--blue-2),var(--blue));font-size:11px;color:#fff}
+.proj-body{position:relative;z-index:3;margin-top:-52px;padding:22px 24px 26px;
+  background:linear-gradient(180deg,rgba(20,27,41,.96),rgba(11,15,22,.99));
+  border-top:1px solid rgba(255,255,255,.07);border-radius:var(--radius) var(--radius) 0 0;backdrop-filter:blur(10px)}
+.proj-wide .proj-body{margin-top:0;border-radius:0;border-top:0;padding:30px;display:flex;flex-direction:column;justify-content:center}
+.proj-body h3{margin:16px 0 8px;font-size:19px;font-weight:500;letter-spacing:-.3px}
+.proj-wide .proj-body h3{font-size:24px}
+.proj-body p{margin:0;color:var(--muted);font-size:14.2px;line-height:1.6}
+.proj-body .built{display:block;margin-top:10px;font-size:13px;color:var(--blue-soft)}
+.proj-actions{display:flex;align-items:center;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07)}
+.icon-btn{position:relative;width:36px;height:36px;border-radius:10px;flex:0 0 36px;display:grid;place-items:center;
+  cursor:pointer;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:#9fb2cd;
+  transition:background .16s,color .16s,border-color .16s}
+.icon-btn:hover,.icon-btn:focus-visible{background:rgba(43,107,255,.22);color:#fff;border-color:transparent}
+.icon-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linejoin:round}
+.icon-btn::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%);
+  white-space:nowrap;padding:5px 10px;border-radius:7px;font-size:11.5px;color:#d3dcea;background:#121b2c;
+  border:1px solid var(--line-2);opacity:0;pointer-events:none;transition:opacity .15s}
+.icon-btn:hover::after{opacity:1}
+.open-hint{margin-left:auto;font-size:12.5px;color:var(--muted-2)}
+.proj:hover .open-hint{color:var(--blue-soft)}
 
-  /* ======= project drawings ======= */
-  .drawing{
-    display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:40px;
-    padding:34px 0;border-top:1px dashed var(--line)
-  }
-  .drawing:first-of-type{border-top:none;padding-top:0}
-  .diagram{border:1.5px solid var(--line);background:var(--blue-deep);padding:10px}
-  .diagram svg{display:block;width:100%;height:auto}
-  .diagram .cap{color:var(--dim);font-size:.8rem;padding:8px 6px 2px;border-top:1px dashed var(--line);margin-top:8px}
-  .drawing h3{font-size:1.3rem;font-weight:600}
-  .drawing .role{color:var(--dim);font-size:.92rem}
-  .drawing p.desc{margin-top:14px;max-width:56ch}
-  .drawing .spec{margin-top:14px;color:var(--dim);font-size:.9rem;max-width:56ch}
-  .drawing .spec b{color:var(--amber);font-weight:600}
-  .plinks{margin-top:14px}
-  .plinks a{margin-right:20px;font-weight:600;text-decoration-color:var(--amber)}
-  .plinks a:hover{color:var(--amber)}
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{padding:0 0 24px;border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(170deg,#101b2e,#0a0e17);border:1px solid var(--line);
+  transition:border-color .22s,transform .22s}
+.svc:hover{border-color:var(--line-2);transform:translateY(-4px)}
+.svc .art{height:170px;display:grid;place-items:center;border-bottom:1px solid rgba(255,255,255,.04);
+  background:radial-gradient(90% 120% at 50% 0%,rgba(43,107,255,.18),rgba(9,13,21,0) 70%)}
+.svc .art svg{width:120px;height:92px;stroke:var(--blue-2);fill:none;stroke-width:1.4;opacity:.9}
+.svc h4{margin:22px 24px 8px;font-size:17px;font-weight:500}
+.svc p{margin:0 24px;color:var(--muted-2);font-size:13.2px;line-height:1.6}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);margin-top:24px;border:1px solid var(--line);
+  border-radius:var(--radius);background:linear-gradient(170deg,#0f1725,#090c12);overflow:hidden}
+.stats-bar div{padding:30px 10px;text-align:center;border-right:1px solid rgba(255,255,255,.055)}
+.stats-bar div:last-child{border-right:0}
+.stats-bar b{display:block;font-size:34px;font-weight:600;letter-spacing:-1px}
+.stats-bar small{font-size:12.5px;color:var(--muted)}
 
-  /* ======= project media (screenshots / demo clips) ======= */
-  .media{margin-top:16px;max-width:56ch}
-  .media img,.media video{max-width:100%;height:auto;border:1.5px solid var(--line);display:block}
-  .media iframe{width:100%;aspect-ratio:16/9;border:1.5px solid var(--line)}
-  .media a{display:block;line-height:0}
-  .media .cap{color:var(--dim);font-size:.8rem;margin-top:6px;line-height:1.5}
+/* process */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proc{position:relative;height:300px;overflow:hidden;border-radius:var(--radius);padding:24px;
+  background:linear-gradient(170deg,#101c33,#0a1120);border:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:flex-end}
+.proc .num{position:absolute;top:22px;left:-34px;font-size:168px;font-weight:700;line-height:1;letter-spacing:-6px;
+  background:linear-gradient(180deg,#5b96ff,#1d4fd8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.proc h4{margin:0 0 8px;font-size:17px;font-weight:500;position:relative}
+.proc p{margin:0;color:var(--muted-2);font-size:13.2px;line-height:1.6;position:relative;max-width:260px}
+.proc-cta{margin-top:22px;padding:26px 32px;border-radius:var(--radius);display:flex;align-items:center;
+  justify-content:space-between;gap:24px;flex-wrap:wrap;background:linear-gradient(100deg,#0d1627,#101d35);
+  border:1px solid var(--line-2)}
+.proc-cta h3{margin:0;font-size:22px;font-weight:500;letter-spacing:-.4px}
 
-  /* ======= screenshot strips (real app screens, horizontal scroll) ======= */
-  .shots{margin-top:14px;max-width:56ch}
-  .shots .row{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-color:var(--line) transparent}
-  .shots a{flex:0 0 auto;line-height:0}
-  .shots img{height:180px;width:auto;border:1.5px solid var(--line);display:block}
-  .shots .cap{color:var(--dim);font-size:.8rem;margin-top:4px;line-height:1.5}
+/* about */
+.about-grid{display:grid;grid-template-columns:.85fr 1.6fr;gap:22px;align-items:start}
+.card{background:linear-gradient(170deg,#101a2b,#0a0e16);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.profile{text-align:center;padding:16px 16px 28px}
+.profile .pic{width:100%;height:300px;border-radius:16px;margin-bottom:20px;overflow:hidden;
+  background:radial-gradient(85% 90% at 50% 30%,#1d4ed8,#0b1b3c 70%)}
+.profile .pic img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.badge-avail{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:12.5px;color:#cfd9ea}
+.badge-avail i{width:7px;height:7px;border-radius:50%;background:#34d399;display:block}
+.profile h3{margin:16px 0 8px;font-size:25px;font-weight:500;letter-spacing:1.4px}
+.profile p{margin:0 auto 20px;max-width:250px;color:var(--muted-2);font-size:13.2px;line-height:1.6}
+.socials{display:flex;justify-content:center;gap:11px;margin-bottom:22px;flex-wrap:wrap}
+.socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-2);
+  color:#c6d2e6;transition:background .18s,color .18s,transform .18s}
+.socials a:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
+.socials svg{width:17px;height:17px;fill:currentColor}
+.about-right{display:grid;gap:22px}
+.about-right h3{margin:0 0 14px;font-size:21px;font-weight:500}
+.about-right p{margin:0 0 14px;color:var(--muted);font-size:14.6px;line-height:1.72}
+.about-right p:last-child{margin-bottom:0}
+.about-right b{color:#d6e2f5;font-weight:500}
+.stack{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stack strong{font-size:19px;font-weight:500;margin-right:auto}
+.stack i{padding:9px 15px;border-radius:999px;border:1px solid var(--line-2);background:rgba(43,107,255,.07);
+  font-style:normal;font-size:12.5px;font-weight:500;color:var(--blue-soft)}
+.exp-row{display:grid;grid-template-columns:1.15fr 1fr auto;gap:12px;align-items:center;padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);font-size:14.5px}
+.exp-row:last-child{border-bottom:0}
+.exp-row span:nth-child(2),.exp-row span:last-child{color:var(--muted)}
 
-  /* svg shared */
-  .box{fill:var(--blue);stroke:var(--dim);stroke-width:1.2}
-  .box.mine{fill:var(--amber);stroke:none}
-  text{font-family:'Space Grotesk',sans-serif;font-size:11.5px;fill:var(--chalk)}
-  .mine + text, text.dark{fill:var(--blue-deep);font-weight:600}
-  .wire{stroke:var(--dim);stroke-width:1.2;fill:none;marker-end:url(#arr)}
+/* faq */
+.faq{display:grid;gap:14px}
+details{border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:linear-gradient(170deg,#101b2e,#0b1120)}
+details[open]{border-color:rgba(125,165,255,.34)}
+summary{list-style:none;cursor:pointer;padding:22px 72px 22px 26px;position:relative;font-size:17px;font-weight:500}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);width:34px;height:34px;
+  border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font-size:17px;font-weight:300;color:#c6d2e6}
+details[open] summary::after{content:"\00d7";background:rgba(43,107,255,.22);border-color:transparent}
+details p{margin:-6px 70px 22px 26px;color:var(--muted);font-size:14.4px;line-height:1.65}
 
-  /* ======= experience / skills ======= */
-  .job{display:grid;grid-template-columns:180px 1fr;gap:26px;padding:20px 0;border-top:1px dashed var(--line)}
-  .job:first-of-type{border-top:none}
-  .job .when{color:var(--dim);font-size:.92rem}
-  .job h3{font-size:1.05rem;font-weight:600}
-  .job .org{color:var(--dim);font-weight:400}
-  .job ul{margin:8px 0 0 18px;max-width:60ch;color:var(--dim)}
-  .job li{margin-top:6px}
-  .job li b{color:var(--chalk);font-weight:500}
+/* cta */
+.cta{position:relative;overflow:hidden;padding:56px;border-radius:var(--radius);border:1px solid var(--line-2);
+  background:linear-gradient(110deg,#0d1c3f 0%,#0b1b3c 48%,#12336e 100%)}
+.cta::after{content:"";position:absolute;right:-4%;top:-30%;width:62%;height:170%;transform:skewX(-16deg);pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.055) 0 46%,rgba(255,255,255,0) 46%),
+             linear-gradient(135deg,rgba(255,255,255,.04) 0 62%,rgba(255,255,255,0) 62%)}
+.cta h2{position:relative;margin:0 0 16px;font-size:clamp(28px,3.6vw,40px);font-weight:600;letter-spacing:-1px;line-height:1.2;max-width:600px}
+.cta h2 em{font-style:normal;color:var(--blue-soft)}
+.cta p{position:relative;margin:0 0 28px;color:#a9b7cc;font-size:15.5px;line-height:1.6;max-width:420px}
+.cta .btn{position:relative}
 
-  /* ======= title block footer ======= */
-  .titleblock{border-top:2px solid var(--chalk)}
-  .tb{
-    display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;
-    border-bottom:1px solid var(--line)
-  }
-  .tb > div{padding:14px 18px;border-right:1px solid var(--line)}
-  .tb > div:last-child{border-right:none}
-  .tb .k{display:block;color:var(--dim);font-size:.75rem;margin-bottom:2px}
-  .tb .v{font-weight:600}
-  .tb .v a{text-decoration-color:var(--amber)}
-  .tb .v a:hover{color:var(--amber)}
-  .contactrow{padding:26px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
-  .contactrow .cta{font-size:1.15rem;font-weight:600}
-  .btn{
-    display:inline-block;background:var(--amber);color:var(--blue-deep);font-weight:700;
-    padding:11px 22px;text-decoration:none;border:none;font-size:.98rem
-  }
-  .btn:hover{filter:brightness(1.08)}
+/* footer */
+footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a1222,#0c1627);border-top:1px solid var(--line)}
+.wordmark{text-align:center;font-size:clamp(44px,10.5vw,140px);font-weight:700;letter-spacing:-2px;line-height:1;
+  background:linear-gradient(180deg,#f4f7fc 8%,#93a4bf 55%,#30415c 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.f-nav{display:flex;justify-content:center;gap:30px;margin:34px 0 26px;font-size:14.5px;color:#c2cde0;flex-wrap:wrap}
+.f-nav a:hover{color:#fff}
+.f-cv{text-align:center;margin-top:22px;font-size:13.5px;color:var(--muted)}
+.f-cv a{color:var(--blue-soft)}
+.f-bottom{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:34px;
+  padding-top:22px;border-top:1px solid rgba(255,255,255,.06);font-size:12.8px;color:var(--muted-2)}
+.f-bottom nav{display:flex;gap:18px}
 
-  @media(max-width:820px){
-    .drawing{grid-template-columns:1fr}
-    .job{grid-template-columns:1fr;gap:4px}
-    .tb{grid-template-columns:1fr 1fr}
-    .tb > div{border-bottom:1px solid var(--line)}
-    .hero{padding:48px 0 28px}
-  }
+/* modal */
+.backdrop{position:fixed;inset:0;z-index:100;display:none;padding:40px 20px;overflow-y:auto;
+  background:rgba(3,5,9,.78);backdrop-filter:blur(9px)}
+.backdrop.open{display:block}
+.modal{width:min(100%,960px);margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid var(--line-2);
+  background:linear-gradient(170deg,#101a2b,#0a0e16);box-shadow:0 40px 90px -30px #000;animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(16px)}}
+.m-head{position:relative;padding:28px 30px 0}
+.m-head h3{margin:14px 0 6px;font-size:27px;font-weight:500;letter-spacing:-.6px}
+.m-sublede{margin:0;color:var(--muted);font-size:15px}
+.m-close{position:absolute;top:24px;right:24px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  cursor:pointer;font-size:19px;line-height:1;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:#c6d2e6}
+.m-close:hover{background:rgba(43,107,255,.25);color:#fff;border-color:transparent}
+.m-tabs{display:flex;gap:4px;padding:20px 30px 0;border-bottom:1px solid rgba(255,255,255,.08);overflow-x:auto}
+.m-tab{padding:11px 16px;border:0;background:none;cursor:pointer;white-space:nowrap;border-radius:9px 9px 0 0;
+  font:inherit;font-size:14px;color:var(--muted)}
+.m-tab:hover{color:#dbe4f2}
+.m-tab[aria-selected="true"]{color:#fff;background:rgba(43,107,255,.14);box-shadow:inset 0 -2px 0 var(--blue-2)}
+.m-body{padding:26px 30px;min-height:240px}
+.m-body>p{margin:0 0 14px;color:var(--muted);font-size:15px;line-height:1.72}
+.m-sub{margin:22px 0 10px;font-size:13px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted-2)}
+.m-note{margin:0 0 18px;font-size:13px;color:var(--muted-2)}
+.m-list{margin:0;padding-left:18px;color:var(--muted);font-size:14.6px;line-height:1.85}
+.m-list b{color:#d6e2f5;font-weight:500}
+.pills{display:flex;gap:7px;flex-wrap:wrap}
+.pills span{padding:5px 12px;border-radius:999px;border:1px solid var(--line-2);font-size:12.2px;color:#c3cddd}
+.m-foot{display:flex;gap:10px;flex-wrap:wrap;padding:18px 30px 26px;border-top:1px solid rgba(255,255,255,.07)}
+.m-foot .btn{padding:11px 22px;font-size:14px}
+.arch{display:grid;gap:8px}
+.arch-row h6{margin:0 0 8px;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted-2)}
+.arch-nodes{display:flex;gap:10px;flex-wrap:wrap}
+.node{flex:1 1 160px;padding:13px 15px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025)}
+.node.mine{border-color:rgba(75,141,255,.5);background:linear-gradient(170deg,rgba(43,107,255,.22),rgba(43,107,255,.05))}
+.node b{display:block;font-size:14px;font-weight:500}
+.node small{font-size:11.5px;color:var(--muted-2)}
+.arch-arrow{text-align:center;color:#3b4a61;font-size:13px;line-height:1.6}
+.flow img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+.gal figure{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#07090e}
+.gal img{width:100%;height:200px;object-fit:cover;object-position:top center}
+.gal figcaption{padding:9px 11px;font-size:11.5px;color:var(--muted-2)}
+
+@media (max-width:960px){
+  .hero{padding:44px 26px}
+  .hero-grid{grid-template-columns:1fr}
+  .sc-3{left:0}.sc-4{right:0}
+  .proj-grid,.svc-grid,.proc-grid,.about-grid,.proj-wide{grid-template-columns:1fr}
+  .proj-wide .shot{min-height:230px;border-right:0;border-bottom:1px solid rgba(255,255,255,.04)}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stats-bar div:nth-child(2){border-right:0}
+  .nav ul{display:none}
+  .cta{padding:34px 26px}
+  section{padding:72px 0}
+}
+@media (max-width:600px){
+  .backdrop{padding:16px 10px}
+  .m-head,.m-tabs,.m-body,.m-foot{padding-left:18px;padding-right:18px}
+  .m-head h3{font-size:22px}
+  .exp-row{grid-template-columns:1fr auto}
+  .exp-row span:nth-child(2){display:none}
+}
 </style>
 </head>
 <body>
 
-<div class="sheet">
+<div class="wrap navbar">
+  <nav class="nav">
+    <span class="brand">Parvez Hossen</span>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+    </ul>
+    <a class="btn btn-primary" href="mailto:ph.cse.bd@gmail.com">Book a call</a>
+  </nav>
+</div>
 
-  <div class="strip">
-    <span class="doc">DWG № PH-2026 · PARVEZ HOSSEN · SOFTWARE ENGINEER</span>
-    <nav aria-label="Sections">
-      <a href="#work">Drawings</a>
-      <a href="#experience">Record</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<div class="wrap">
+  <header class="panel hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Hi! I'm Parvez Hossen, building<b>Production Systems.</b></h1>
+        <p class="lede">From data model to deployment — Django services on PostgreSQL, Next.js
+          dashboards and Flutter apps, built end to end and run in production.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Let's Connect</a>
+          <a class="btn btn-ghost" href="#projects">See My Work</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait-glow"></div>
+        <div class="portrait"><img src="assets/img/parvez-portrait.webp" alt="Parvez Hossen" width="660" height="836" fetchpriority="high"></div>
+        <div class="stat-chip sc-1"><b>3+</b><small>Years Shipping</small></div>
+        <div class="stat-chip sc-2"><b>5</b><small>Systems in Production</small></div>
+        <div class="stat-chip sc-3"><b>100+</b><small>Pytest Modules</small></div>
+        <div class="stat-chip sc-4"><b>800+</b><small>DSA Problems Solved</small></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="wrap strip">
+  <h6>Built with:</h6>
+  <div class="strip-row">
+    <span>Django</span><span>PostgreSQL</span><span>Next.js</span>
+    <span>Flutter</span><span>Celery</span><span>Docker</span>
+  </div>
+</div>
+
+<section id="projects" class="wrap">
+  <div class="sec-head">
+    <h2>Recent Projects</h2>
+    <p>Five systems I designed and shipped — a public human-rights archive, logistics,
+      AI commerce, property transactions and warehouse operations.</p>
   </div>
 
-  <main>
-    <div class="wrap hero">
-      <h1>Every product here is drawn <span class="amber">end to end</span> — and I built each layer marked in amber.</h1>
-      <p class="sub">
-        I'm <b>Parvez Hossen</b>, a software engineer in Dhaka. For the last 3 years I've
-        shipped complete systems: <b>Django</b> services on PostgreSQL, <b>Next.js</b>
-        dashboards, <b>Flutter</b> apps — data model to deployment to the 2 a.m. production debugging.
-      </p>
+  <div class="proj-grid">
 
-      <div class="matrix">
-        <table>
-          <caption>Fig. 1 — Delivery matrix. <b>Amber cells</b> are layers I designed and built. Click one to open the drawing.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Layer</th>
-              <th scope="col"><a href="#victoria">Victoria Express</a></th>
-              <th scope="col"><a href="#grocerai">GrocerAI</a></th>
-              <th scope="col"><a href="#b2024">Bangladesh2024</a></th>
-              <th scope="col"><a href="#jonnobhumi">Jonnobhumi</a></th>
-              <th scope="col"><a href="#mph">MPH</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Mobile · Flutter</th>
-              <td class="built" data-go="victoria" tabindex="0">2 apps</td>
-              <td class="built" data-go="grocerai" tabindex="0">storefront</td>
-              <td class="off">—</td>
-              <td class="off">—</td>
-              <td class="off">—</td>
-            </tr>
-            <tr>
-              <th scope="row">Web · Next.js</th>
-              <td class="built" data-go="victoria" tabindex="0">ops dashboard</td>
-              <td class="off">—</td>
-              <td class="built" data-go="b2024" tabindex="0">public archive</td>
-              <td class="built" data-go="jonnobhumi" tabindex="0">user + admin</td>
-              <td class="built" data-go="mph" tabindex="0">admin</td>
-            </tr>
-            <tr>
-              <th scope="row">API · Django/DRF</th>
-              <td class="built" data-go="victoria" tabindex="0">logistics API</td>
-              <td class="built" data-go="grocerai" tabindex="0">commerce + RAG</td>
-              <td class="built" data-go="b2024" tabindex="0">HLS pipeline</td>
-              <td class="built" data-go="jonnobhumi" tabindex="0">authz engine</td>
-              <td class="built" data-go="mph" tabindex="0">10× redesign</td>
-            </tr>
-            <tr>
-              <th scope="row">Data · PostgreSQL</th>
-              <td class="built" data-go="victoria" tabindex="0">+ Redis, Celery</td>
-              <td class="built" data-go="grocerai" tabindex="0">+ pgvector</td>
-              <td class="built" data-go="b2024" tabindex="0">pHash dedup</td>
-              <td class="built" data-go="jonnobhumi" tabindex="0">audit triggers</td>
-              <td class="built" data-go="mph" tabindex="0">FTS + GIN</td>
-            </tr>
-            <tr>
-              <th scope="row">Ops · Docker/CI</th>
-              <td class="built" data-go="victoria" tabindex="0">deployed</td>
-              <td class="built" data-go="grocerai" tabindex="0">deployed</td>
-              <td class="built" data-go="b2024" tabindex="0">CDN + CI</td>
-              <td class="built" data-go="jonnobhumi" tabindex="0">deployed</td>
-              <td class="built" data-go="mph" tabindex="0">+ Grafana</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="matrix-hint">21 of 25 cells amber. That's the pitch.</p>
-      </div>
-    </div>
-
-    <section id="work">
-      <div class="wrap">
-        <div class="sechead"><h2>The drawings</h2><span class="rule"></span><span class="fig">Fig. 2 – 6</span></div>
-
-        <article class="drawing" id="victoria">
-          <div class="diagram">
-            <svg viewBox="0 0 400 210" role="img" aria-label="Victoria Express architecture: merchant and rider Flutter apps and a Next.js dashboard all calling one Django API backed by PostgreSQL and Redis">
-              <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8FB0CC"/></marker></defs>
-              <rect class="box mine" x="10" y="14" width="102" height="34"/><text x="61" y="35" text-anchor="middle" class="dark">Merchant app</text>
-              <rect class="box mine" x="10" y="88" width="102" height="34"/><text x="61" y="109" text-anchor="middle" class="dark">Rider app</text>
-              <rect class="box mine" x="10" y="162" width="102" height="34"/><text x="61" y="183" text-anchor="middle" class="dark">Ops dashboard</text>
-              <rect class="box mine" x="168" y="88" width="96" height="34"/><text x="216" y="109" text-anchor="middle" class="dark">Django API</text>
-              <rect class="box" x="316" y="52" width="74" height="34"/><text x="353" y="73" text-anchor="middle">PostgreSQL</text>
-              <rect class="box" x="316" y="126" width="74" height="34"/><text x="353" y="147" text-anchor="middle">Redis · Celery</text>
-              <path class="wire" d="M112 31 H140 V100 H164"/>
-              <path class="wire" d="M112 105 H164"/>
-              <path class="wire" d="M112 179 H140 V110 H164"/>
-              <path class="wire" d="M264 98 H290 V69 H312"/>
-              <path class="wire" d="M264 112 H290 V143 H312"/>
-            </svg>
-            <p class="cap">Fig. 2 — Victoria Express. Amber boxes: built by me. One API, three clients.</p>
-          </div>
-          <div>
-            <h3>Victoria Express</h3>
-            <p class="role">Courier &amp; logistics platform</p>
-            <p class="desc">A delivery business that runs on this system daily: merchants book
-              parcels from one Flutter app, riders pick up and track from another, and the
-              operations team routes everything through a Next.js dashboard — all speaking
-              to one Django API with Celery workers handling dispatch and notifications.</p>
-            <p class="spec"><b>Built:</b> all four amber boxes — both mobile apps, the dashboard,
-              and the API. <b>Spec:</b> DRF, PostgreSQL, Celery, Redis, push notifications.</p>
-            <div class="media">
-              <a href="assets/img/victoria-delivery-workflow.webp" target="_blank" rel="noopener">
-                <img src="assets/img/victoria-delivery-workflow.webp"
-                     alt="Victoria Express delivery workflow: merchant pickup request in the Flutter app, admin assigns a rider from the Next.js panel, rider submits to hub with QR scan, hub-to-hub transfer, final delivery confirmation"
-                     loading="lazy" width="1536" height="1024">
-              </a>
-              <p class="cap">Pickup request → rider assignment → hub transfer → delivery, across all three apps. Click to enlarge.</p>
-            </div>
-            <div class="shots">
-              <div class="row">
-                <a href="assets/img/shots/victoria-merchant-dashboard.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-merchant-dashboard.webp" alt="Merchant app home: wallet balance, pickup request, express delivery, fraud check and payments tiles" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-merchant-add-parcel.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-merchant-add-parcel.webp" alt="Merchant app add-parcel form: service type, home delivery or pickup point, recipient and district fields" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-merchant-pickup.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-merchant-pickup.webp" alt="Merchant app pickup request screen with add parcel and pickup addresses" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-rider-dashboard.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-dashboard.webp" alt="Rider app home: delivered, pending and collected counters, parcel tracking by QR scan, pick requests and deposit report" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-rider-pickup.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-pickup.webp" alt="Rider app assigned pickup with merchant address, complete pickup, decline and failed actions" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-rider-delivery.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-delivery.webp" alt="Rider app delivery assignments list with COD amounts and statuses" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-rider-order-details.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-rider-order-details.webp" alt="Rider app order details with cash-on-delivery amount, recipient contact actions and on-the-way status update" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-admin-pickups.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-admin-pickups.webp" alt="Next.js admin panel pickup requests queue" loading="lazy"></a>
-                <a href="assets/img/shots/victoria-admin-assign.webp" target="_blank" rel="noopener"><img src="assets/img/shots/victoria-admin-assign.webp" alt="Next.js admin panel rider assignment dialog" loading="lazy"></a>
-              </div>
-              <p class="cap">Real screens from the merchant app, rider app and admin panel — scroll, click to enlarge.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="drawing" id="grocerai">
-          <div class="diagram">
-            <svg viewBox="0 0 400 210" role="img" aria-label="GrocerAI architecture: Flutter storefront calling a Django API with a RAG layer over pgvector, with an external LLM behind a guardrail">
-              <rect class="box mine" x="10" y="88" width="96" height="34"/><text x="58" y="109" text-anchor="middle" class="dark">Flutter store</text>
-              <rect class="box mine" x="152" y="88" width="92" height="34"/><text x="198" y="109" text-anchor="middle" class="dark">Django API</text>
-              <rect class="box mine" x="152" y="152" width="92" height="34"/><text x="198" y="173" text-anchor="middle" class="dark">RAG layer</text>
-              <rect class="box" x="298" y="152" width="92" height="34"/><text x="344" y="173" text-anchor="middle">pgvector</text>
-              <rect class="box" x="298" y="24" width="92" height="34"/><text x="344" y="45" text-anchor="middle">LLM (external)</text>
-              <path class="wire" d="M106 105 H148"/>
-              <path class="wire" d="M198 122 V148"/>
-              <path class="wire" d="M244 169 H294"/>
-              <path class="wire" d="M244 98 H270 V41 H294"/>
-              <text x="252" y="76" font-size="10" fill="#8FB0CC">guardrail</text>
-            </svg>
-            <p class="cap">Fig. 3 — GrocerAI. The model is outside the trust boundary; the RAG layer decides what it sees.</p>
-          </div>
-          <div>
-            <h3>GrocerAI (Grocento)</h3>
-            <p class="role">AI-assisted grocery commerce</p>
-            <p class="desc">Grocery shopping with an LLM in the loop — retrieval and grounding
-              over the live product catalogue with embeddings and vector search, so the
-              assistant recommends real items in stock. The interesting problem isn't the
-              model call; it's what the system does when the model is confidently wrong.</p>
-            <p class="spec"><b>Built:</b> storefront app, API, and the RAG layer with typed error
-              handling and WebSocket progress streaming. <b>Spec:</b> Django, pgvector, embeddings, Flutter.</p>
-            <div class="media">
-              <a href="assets/img/grocerai-user-flow.webp" target="_blank" rel="noopener">
-                <img src="assets/img/grocerai-user-flow.webp"
-                     alt="GrocerAI app user flow in six screens: set dietary and household preferences, home dashboard with credit balance, new order, AI finding the best grocery deals, comparing grocers, and checkout with pickup or delivery"
-                     loading="lazy" width="1774" height="887">
-              </a>
-              <p class="cap">Preferences → AI cart building → grocer comparison → checkout, in the Flutter app. Click to enlarge.</p>
-            </div>
-            <div class="shots">
-              <div class="row">
-                <a href="assets/img/shots/grocerai-preferences.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-preferences.webp" alt="GrocerAI preferences screen: nearby grocers, household size and dietary preference chips" loading="lazy"></a>
-                <a href="assets/img/shots/grocerai-dashboard.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-dashboard.webp" alt="GrocerAI home dashboard with last order, credit balance and monthly statement" loading="lazy"></a>
-                <a href="assets/img/shots/grocerai-new-order.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-new-order.webp" alt="GrocerAI new order questionnaire with receipt upload and participating grocery stores" loading="lazy"></a>
-                <a href="assets/img/shots/grocerai-agent.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-agent.webp" alt="GrocerAI agent progress screen streaming 'finding the best grocery deals for you' over WebSocket" loading="lazy"></a>
-                <a href="assets/img/shots/grocerai-cart.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-cart.webp" alt="AI-built cart for a store with quantities, per-item prices and swap-item actions" loading="lazy"></a>
-                <a href="assets/img/shots/grocerai-checkout.webp" target="_blank" rel="noopener"><img src="assets/img/shots/grocerai-checkout.webp" alt="GrocerAI checkout with credit redemption, saved card, store pickup and delivery time slots" loading="lazy"></a>
-              </div>
-              <p class="cap">Real screens from the Flutter app — scroll, click to enlarge.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="drawing" id="b2024">
-          <div class="diagram">
-            <svg viewBox="0 0 400 210" role="img" aria-label="Bangladesh2024 Archive architecture: contributor uploads flow into a Django API, through a Celery and FFmpeg pipeline to an HLS CDN and a perceptual-hash dedup service, serving a bilingual Next.js archive">
-              <rect class="box" x="10" y="40" width="96" height="34"/><text x="58" y="61" text-anchor="middle">Contributor</text>
-              <rect class="box mine" x="10" y="152" width="96" height="34"/><text x="58" y="173" text-anchor="middle" class="dark">Next.js archive</text>
-              <rect class="box mine" x="152" y="88" width="92" height="46"/><text x="198" y="106" text-anchor="middle" class="dark">Django API</text><text x="198" y="122" text-anchor="middle" class="dark" font-size="10">30+ models · mod queue</text>
-              <rect class="box mine" x="298" y="24" width="92" height="34"/><text x="344" y="45" text-anchor="middle" class="dark">Celery · FFmpeg</text>
-              <rect class="box" x="298" y="96" width="92" height="34"/><text x="344" y="117" text-anchor="middle">HLS → CDN</text>
-              <rect class="box mine" x="298" y="168" width="92" height="34"/><text x="344" y="189" text-anchor="middle" class="dark">pHash dedup</text>
-              <path class="wire" d="M106 57 H128 V98 H148"/>
-              <path class="wire" d="M244 98 H270 V41 H294"/>
-              <path class="wire" d="M344 62 V92"/>
-              <path class="wire" d="M244 122 H270 V185 H294"/>
-              <path class="wire" d="M152 122 H128 V169 H110"/>
-            </svg>
-            <p class="cap">Fig. 4 — Bangladesh2024 Archive. Every video becomes a 4-rendition HLS ladder; every photo gets a pHash before a moderator sees it.</p>
-          </div>
-          <div>
-            <h3>Bangladesh2024 Archive</h3>
-            <p class="role">Open-source public human-rights archive · lead backend developer</p>
-            <p class="desc">A permanent, bilingual public record of Bangladesh's July–August 2024
-              movement — martyrs, injured, arrested, incidents, news, podcasts, protest graffiti.
-              Anyone can submit a record; a moderation workflow reviews it; approved records join
-              the searchable archive. I wrote ~230 of the backend's 255 commits and contributed
-              to the Next.js frontend.</p>
-            <p class="spec"><b>Built:</b> the REST API (30+ models, 5 Django apps), the Celery + FFmpeg
-              pipeline transcoding every video to 4-rendition adaptive HLS on a CDN, perceptual-hash
-              deduplication with a Hamming-distance similarity graph, a polymorphic moderation audit
-              trail, JWT + OTP auth, and Bengali-language bulk ETL.
-              <b>Spec:</b> Django, DRF, Celery, PostgreSQL, Redis, FFmpeg/HLS, Next.js 14, DO Spaces CDN.</p>
-            <p class="plinks">
-              <a href="https://bangladesh2024.info/" target="_blank" rel="noopener">Live archive</a>
-              <a href="https://github.com/Archive2024/Bangladesh2024-Backend" target="_blank" rel="noopener">Backend source</a>
-              <a href="https://github.com/Archive2024/Bangladesh2024-Frontend" target="_blank" rel="noopener">Frontend source</a>
-            </p>
-          </div>
-        </article>
-
-        <article class="drawing" id="jonnobhumi">
-          <div class="diagram">
-            <svg viewBox="0 0 400 210" role="img" aria-label="Jonnobhumi architecture: user and admin Next.js sites calling a Django API through an authorization engine, with a tamper-proof audit log enforced by PostgreSQL triggers">
-              <rect class="box mine" x="10" y="40" width="96" height="34"/><text x="58" y="61" text-anchor="middle" class="dark">User site</text>
-              <rect class="box mine" x="10" y="136" width="96" height="34"/><text x="58" y="157" text-anchor="middle" class="dark">Admin site</text>
-              <rect class="box mine" x="152" y="88" width="92" height="34"/><text x="198" y="103" text-anchor="middle" class="dark">Authz engine</text><text x="198" y="116" text-anchor="middle" class="dark">11r · 57p</text>
-              <rect class="box mine" x="298" y="52" width="92" height="34"/><text x="344" y="73" text-anchor="middle" class="dark">Django API</text>
-              <rect class="box" x="298" y="140" width="92" height="46"/><text x="344" y="158" text-anchor="middle">Audit log</text><text x="344" y="174" text-anchor="middle" font-size="10">pg trigger · append-only</text>
-              <path class="wire" d="M106 57 H128 V98 H148"/>
-              <path class="wire" d="M106 153 H128 V112 H148"/>
-              <path class="wire" d="M244 98 H270 V69 H294"/>
-              <path class="wire" d="M320 86 V136"/>
-            </svg>
-            <p class="cap">Fig. 5 — Jonnobhumi. Every mutation lands in an append-only audit log the app itself cannot rewrite.</p>
-          </div>
-          <div>
-            <h3>Jonnobhumi</h3>
-            <p class="role">Property transaction platform</p>
-            <p class="desc">Listings and transactions with separate user and admin frontends.
-              The part I'd defend in a design review: a policy-based authorization engine —
-              11 roles, 57 permissions, DENY-wins evaluation, Redis-cached — and an audit
-              trail recording actor, before/after diffs, IP and request ID, made tamper-proof
-              by a PostgreSQL trigger so the record survives a compromised application path.</p>
-            <p class="spec"><b>Built:</b> both frontends, the API, and the authorization/audit
-              subsystem. <b>Spec:</b> DRF, PostgreSQL triggers, Redis, Next.js, TypeScript.</p>
-          </div>
-        </article>
-
-        <article class="drawing" id="mph">
-          <div class="diagram">
-            <svg viewBox="0 0 400 210" role="img" aria-label="MPH architecture: Next.js admin calling a redesigned Django API on PostgreSQL full-text search, observed by Prometheus and Grafana">
-              <rect class="box mine" x="10" y="88" width="96" height="34"/><text x="58" y="109" text-anchor="middle" class="dark">Next.js admin</text>
-              <rect class="box mine" x="152" y="88" width="92" height="34"/><text x="198" y="103" text-anchor="middle" class="dark">Django API</text><text x="198" y="116" text-anchor="middle" class="dark">10× faster</text>
-              <rect class="box" x="298" y="88" width="92" height="46"/><text x="344" y="106" text-anchor="middle">PostgreSQL</text><text x="344" y="122" text-anchor="middle" font-size="10">tsvector · GIN</text>
-              <rect class="box" x="152" y="20" width="92" height="34"/><text x="198" y="41" text-anchor="middle">Prometheus</text>
-              <rect class="box" x="298" y="20" width="92" height="34"/><text x="344" y="41" text-anchor="middle">Grafana</text>
-              <path class="wire" d="M106 105 H148"/>
-              <path class="wire" d="M244 105 H294"/>
-              <path class="wire" d="M198 84 V58"/>
-              <path class="wire" d="M244 37 H294"/>
-            </svg>
-            <p class="cap">Fig. 6 — MPH. Regressions surface on a dashboard, not in a support ticket.</p>
-          </div>
-          <div>
-            <h3>MPH</h3>
-            <p class="role">B2B warehouse management</p>
-            <p class="desc">Inventory and order management for a B2B warehouse. I redesigned
-              the Django/PostgreSQL backend for a 10× performance improvement, moved search
-              to generated tsvector columns with weighted GIN indexes, and wired in
-              Prometheus and Grafana so the system reports on itself.</p>
-            <p class="spec"><b>Built:</b> API redesign, search, observability, admin frontend.
-              <b>Spec:</b> Django, PostgreSQL FTS, Prometheus, Grafana, Next.js.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="wrap">
-        <div class="sechead"><h2>Record</h2><span class="rule"></span><span class="fig">revision history</span></div>
-        <div class="job">
-          <p class="when">Aug 2025 — Aug 2026</p>
-          <div>
-            <h3>Software Engineer <span class="org">· DevsMotion, Dhaka (part-time, remote)</span></h3>
-            <ul>
-              <li>Sole or lead engineer on <b>Jonnobhumi, GrocerAI and Victoria Express</b> — data model to production operations.</li>
-              <li><b>100+ pytest modules</b> on a Dockerized, CI-deployed stack; Nginx and GitHub Actions in production.</li>
-              <li>Async processing with Celery and Redis; WebSocket streaming over Django Channels.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="job">
-          <p class="when">Dec 2023 — Apr 2026</p>
-          <div>
-            <h3>Software Engineer <span class="org">· Merchantbay, Dhaka</span></h3>
-            <ul>
-              <li>Warehouse management modules — purchase planning, stock entry, inventory tracking, unit conversion — on <b>Django/DRF and PostgreSQL</b>.</li>
-              <li>AI fashion-sourcing platform: <b>FastAPI RAG</b> over a product corpus with locally hosted LLMs (Ollama).</li>
-              <li>Client project (Adzi Trims): backend redesign for a <b>10× performance improvement</b>, with Prometheus and Grafana monitoring.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="job">
-          <p class="when">Nov 2024 — Jul 2026</p>
-          <div>
-            <h3>Lead Backend Developer <span class="org">· Bangladesh2024 Archive (open source)</span></h3>
-            <ul>
-              <li><b>~230 of 255 backend commits</b>: video pipeline, deduplication, moderation workflow, auth, Bengali data ingestion — see Fig. 4.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="job">
-          <p class="when">Foundation</p>
-          <div>
-            <h3>B.Sc. Computer Science &amp; Engineering <span class="org">· DUET, Gazipur · 2018 — 2023</span></h3>
-            <ul>
-              <li><b>800+ problems</b> solved on LeetCode and Codeforces — the algorithmic base under the architecture.</li>
-            </ul>
-          </div>
+    <article class="proj proj-wide" data-project="bangladesh2024" tabindex="0" role="button" aria-label="Open Bangladesh2024 Archive details">
+      <div class="shot shot-mock">
+        <div class="shot-bar"><i></i><i></i><i></i></div>
+        <div class="mockui">
+          <h5>Adaptive video pipeline</h5>
+          <p>Celery + FFmpeg → 4-rendition HLS on a CDN · pHash dedup</p>
+          <div class="rows"><i></i><i></i><i></i><i></i></div>
+          <span class="pill">Open source</span>
         </div>
       </div>
-    </section>
-  </main>
+      <div class="proj-body">
+        <span class="chip" style="align-self:flex-start">Public Archive · Open Source</span>
+        <h3>Bangladesh2024 Archive</h3>
+        <p>A permanent, bilingual public record of Bangladesh's July–August 2024 movement — martyrs,
+          injured, arrested, incidents, news and protest graffiti. Anyone can submit a record; a
+          moderation workflow reviews it; approved records join the searchable archive. I wrote ~230
+          of the backend's 255 commits as lead backend developer.</p>
+        <span class="built">Built: the REST API (30+ models), the Celery + FFmpeg HLS pipeline, perceptual-hash dedup, the moderation audit trail, JWT + OTP auth and Bengali bulk ETL.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
 
-  <footer class="titleblock" id="contact">
-    <div class="contactrow">
-      <span class="cta">Need someone who can own the whole drawing?</span>
-      <a class="btn" href="mailto:ph.cse.bd@gmail.com">Write to me</a>
-    </div>
-    <div class="tb">
-      <div><span class="k">Drawn by</span><span class="v">Parvez Hossen — Dhaka, Bangladesh</span></div>
-      <div><span class="k">Contact</span><span class="v"><a href="mailto:ph.cse.bd@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/parvez-hossen-knk/" target="_blank" rel="noopener">LinkedIn</a></span></div>
-      <div><span class="k">Source</span><span class="v"><a href="https://github.com/Parvez49" target="_blank" rel="noopener">GitHub</a></span></div>
-      <div><span class="k">CV</span><span class="v"><a href="cv/Parvez_Hossen_CV_Backend.pdf">Backend</a> · <a href="cv/Parvez_Hossen_CV_Backend_AI.pdf">AI</a> · <a href="cv/Parvez_Hossen_CV_FullStack.pdf">Full-stack</a> · <a href="cv/Parvez_Hossen_CV_Mobile.pdf">Mobile</a></span></div>
-    </div>
-  </footer>
+    <article class="proj" data-project="victoria-express" tabindex="0" role="button" aria-label="Open Victoria Express details">
+      <div class="shot">
+        <div class="shot-bar"><i></i><i></i><i></i></div>
+        <img src="assets/img/shots/victoria-admin-assign.webp" alt="Victoria Express operations dashboard" loading="lazy">
+      </div>
+      <div class="proj-body">
+        <span class="chip">Courier &amp; Logistics</span>
+        <h3>Victoria Express</h3>
+        <p>Merchants book parcels from one Flutter app, riders pick up and track from another, and ops
+          routes everything through a Next.js dashboard — one Django API, Celery workers handling
+          dispatch and notifications.</p>
+        <span class="built">Built: both mobile apps, the dashboard, and the API.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
+          <button class="icon-btn" data-tab="screens" data-tip="Screens" aria-label="Screens"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.6"/><path d="M6 18h6"/><rect x="17" y="9" width="5" height="11" rx="1.4"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
 
+    <article class="proj" data-project="grocerai" tabindex="0" role="button" aria-label="Open GrocerAI details">
+      <div class="shot shot-mobile">
+        <div class="phones">
+          <img src="assets/img/shots/grocerai-dashboard.webp" alt="GrocerAI storefront" loading="lazy">
+          <img src="assets/img/shots/grocerai-agent.webp" alt="GrocerAI assistant" loading="lazy">
+        </div>
+      </div>
+      <div class="proj-body">
+        <span class="chip">AI Commerce · RAG</span>
+        <h3>GrocerAI (Grocento)</h3>
+        <p>Grocery shopping with an LLM in the loop — retrieval and grounding over the live product
+          catalogue with embeddings and vector search, so the assistant recommends real items in stock.</p>
+        <span class="built">Built: storefront app, API, and the RAG layer with typed error handling and WebSocket progress streaming.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
+          <button class="icon-btn" data-tab="screens" data-tip="Screens" aria-label="Screens"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.6"/><path d="M6 18h6"/><rect x="17" y="9" width="5" height="11" rx="1.4"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-project="jonnobhumi" tabindex="0" role="button" aria-label="Open Jonnobhumi details">
+      <div class="shot shot-mock">
+        <div class="shot-bar"><i></i><i></i><i></i></div>
+        <div class="mockui">
+          <h5>Authorization engine</h5>
+          <p>11 roles · 57 permissions · DENY-wins · Redis-cached</p>
+          <div class="rows"><i></i><i></i><i></i><i></i></div>
+          <span class="pill">Append-only audit log</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <span class="chip">Property Transactions</span>
+        <h3>Jonnobhumi</h3>
+        <p>Separate user and admin frontends over a policy-based authorization engine — 11 roles,
+          57 permissions, DENY-wins, Redis-cached — with an audit trail made tamper-proof by a
+          PostgreSQL trigger so the record survives a compromised application path.</p>
+        <span class="built">Built: both frontends, the API, and the authorization/audit subsystem.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-project="mph" tabindex="0" role="button" aria-label="Open MPH details">
+      <div class="shot shot-mock">
+        <div class="shot-bar"><i></i><i></i><i></i></div>
+        <div class="mockui">
+          <h5>10× faster backend</h5>
+          <p>tsvector + weighted GIN · Prometheus + Grafana</p>
+          <div class="rows"><i></i><i></i><i></i><i></i></div>
+          <span class="pill">Self-reporting system</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <span class="chip">B2B Warehouse</span>
+        <h3>MPH</h3>
+        <p>Inventory and order management for a B2B warehouse. I redesigned the Django/PostgreSQL
+          backend for a 10× performance improvement, moved search to generated tsvector columns with
+          weighted GIN indexes, and wired in Prometheus and Grafana so the system reports on itself.</p>
+        <span class="built">Built: API redesign, search, observability, admin frontend.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="services" class="wrap">
+  <div class="sec-head">
+    <h2>Services</h2>
+    <p>From interfaces to full-stack — I build modern products that are scalable
+      and genuinely maintainable.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="art"><svg viewBox="0 0 120 92"><rect x="2" y="2" width="116" height="88" rx="8"/><path d="M2 18h116"/><circle cx="12" cy="10" r="2.4"/><circle cx="22" cy="10" r="2.4"/><circle cx="32" cy="10" r="2.4"/><path d="M44 38 30 55l14 17M76 38l14 17-14 17M66 34 54 76"/></svg></div>
+      <h4>Backend &amp; APIs</h4>
+      <p>Django/DRF services on PostgreSQL — data modelling, async workers, caching,
+        and the indexes that keep it fast at scale.</p>
+    </div>
+    <div class="svc">
+      <div class="art"><svg viewBox="0 0 120 92"><rect x="6" y="14" width="74" height="52" rx="5"/><path d="M28 66v8h30v-8"/><rect x="76" y="34" width="38" height="50" rx="5"/><path d="M76 44h38M90 78h10"/></svg></div>
+      <h4>Full-Stack Delivery</h4>
+      <p>Next.js and Flutter clients on the same API — one system, every surface,
+        shipped and deployed end to end.</p>
+    </div>
+    <div class="svc">
+      <div class="art"><svg viewBox="0 0 120 92"><circle cx="60" cy="46" r="17"/><circle cx="60" cy="46" r="34" stroke-dasharray="5 7"/><path d="M60 12v-8M60 88v-8M26 46h-8M102 46h8"/><circle cx="60" cy="12" r="4"/><circle cx="102" cy="46" r="4"/><circle cx="60" cy="80" r="4"/></svg></div>
+      <h4>AI &amp; RAG Systems</h4>
+      <p>Retrieval over your own data with pgvector and embeddings — grounded answers,
+        typed failures, and guardrails around the model.</p>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div><b>3+</b><small>Years Experience</small></div>
+    <div><b>5</b><small>Systems Shipped</small></div>
+    <div><b>100+</b><small>Pytest Modules</small></div>
+    <div><b>800+</b><small>DSA Problems</small></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>Process</h2>
+    <p>A clear workflow drives each project — from strategy and design to
+      development and post-launch support.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="proc"><div class="num">01</div><h4>Define &amp; Architect</h4>
+      <p>Define goals, map the data model, and set the foundation for a system that scales.</p></div>
+    <div class="proc"><div class="num">02</div><h4>Build &amp; Develop</h4>
+      <p>Write clean, modular code with tested APIs and interfaces that match them.</p></div>
+    <div class="proc"><div class="num">03</div><h4>Deploy &amp; Support</h4>
+      <p>Dockerized deploys, CI, metrics and dashboards — so problems surface before users do.</p></div>
+  </div>
+  <div class="proc-cta">
+    <h3>Build reliable, user-focused products with expert code.</h3>
+    <a class="btn btn-primary" href="#contact">Book a call</a>
+  </div>
+</section>
+
+<section id="about" class="wrap">
+  <div class="sec-head">
+    <h2>About Me</h2>
+    <p>I build systems end to end — scalable, observable, and owned from the
+      data model to the production operations.</p>
+  </div>
+  <div class="about-grid">
+    <aside class="card profile">
+      <div class="pic"><img src="assets/img/parvez-portrait.webp" alt="Parvez Hossen" loading="lazy"></div>
+      <span class="badge-avail"><i></i> Available for work</span>
+      <h3>PARVEZ HOSSEN</h3>
+      <p>Software engineer in Dhaka — backend, full-stack, and applied AI.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/parvez-hossen-knk/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://github.com/Parvez49" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        <a href="https://x.com/ParvezH06214778" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+        <a href="https://www.instagram.com/parvezhossen81/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.facebook.com/parvez.hossen.7731/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      </div>
+      <a class="btn btn-primary" href="mailto:ph.cse.bd@gmail.com">Let's Connect</a>
+    </aside>
+
+    <div class="about-right">
+      <div class="card">
+        <h3>Hi! I'm Parvez,</h3>
+        <p>a software engineer in Dhaka. For the last three years I've shipped complete systems:
+          Django services on PostgreSQL, Next.js dashboards, Flutter apps — data model to deployment
+          to the production debugging at 2&nbsp;a.m.</p>
+        <p>I work across the whole system rather than one layer of it: authorization engines, audit
+          trails, retrieval pipelines, video transcoding, search indexes, and the observability that
+          proves any of it still works. Passionate about creating practical solutions that solve
+          real-world problems and make a meaningful impact.</p>
+      </div>
+      <div class="card stack">
+        <strong>My Tech Stack:</strong>
+        <i>Django</i><i>DRF</i><i>PostgreSQL</i><i>Celery</i><i>Redis</i><i>Next.js</i><i>Flutter</i><i>Docker</i>
+      </div>
+      <div class="card">
+        <h3>Experience</h3>
+        <div class="exp-row"><span>Software Engineer</span><span>DevsMotion, Dhaka</span><span>Aug 2025 — Aug 2026</span></div>
+        <div class="exp-row"><span>Software Engineer</span><span>Merchantbay, Dhaka</span><span>Dec 2023 — Apr 2026</span></div>
+        <div class="exp-row"><span>Lead Backend Developer</span><span>Bangladesh2024 Archive</span><span>Nov 2024 — Jul 2026</span></div>
+        <div class="exp-row"><span>B.Sc. Computer Science</span><span>DUET, Gazipur</span><span>2018 — 2023</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faqs" class="wrap">
+  <div class="sec-head">
+    <h2>Frequently Asked Questions</h2>
+    <p>Answers to common questions about my work and process.</p>
+  </div>
+  <div class="faq">
+    <details open>
+      <summary>What kind of projects do you work on?</summary>
+      <p>Backend-heavy products: Django/DRF APIs on PostgreSQL, Next.js dashboards, Flutter apps,
+        and retrieval systems over your own data — from prototype to production deployment.</p>
+    </details>
+    <details>
+      <summary>Do you take on freelance or full-time work?</summary>
+      <p>Both. I'm open to full-time remote roles and to contract work where I own a system or a
+        well-scoped subsystem end to end.</p>
+    </details>
+    <details>
+      <summary>How do you approach a new project?</summary>
+      <p>Data model first. I map the entities and the access rules, agree on the API contract, then
+        build outward to the clients — so the interfaces never drift from the system underneath.</p>
+    </details>
+    <details>
+      <summary>What's your typical project timeline?</summary>
+      <p>A focused subsystem lands in two to four weeks; a full platform with mobile and web clients
+        runs two to three months, shipped in deployable increments.</p>
+    </details>
+    <details>
+      <summary>How can we get started?</summary>
+      <p>Send a short note about the problem and the constraints to
+        <a href="mailto:ph.cse.bd@gmail.com" style="color:var(--blue-soft)">ph.cse.bd@gmail.com</a>.
+        I'll reply with a proposed architecture and a scope you can argue with before any code is written.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contact" class="wrap" style="padding-bottom:0">
+  <div class="cta">
+    <h2>Your vision, my expertise. Let's create something <em>exceptional.</em></h2>
+    <p>Need someone who can own the whole system? Send a message and let's shape your next project.</p>
+    <a class="btn btn-primary" href="mailto:ph.cse.bd@gmail.com">Write to me</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="wordmark">PARVEZ HOSSEN</div>
+    <nav class="f-nav">
+      <a href="#projects">Work</a><a href="#services">Services</a>
+      <a href="#about">About</a><a href="#faqs">FAQs</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/parvez-hossen-knk/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://github.com/Parvez49" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+      <a href="https://x.com/ParvezH06214778" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+      <a href="https://www.instagram.com/parvezhossen81/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="https://www.facebook.com/parvez.hossen.7731/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    </div>
+    <div class="f-cv">
+      CV —
+      <a href="cv/Parvez_Hossen_CV_Backend.pdf">Backend</a> ·
+      <a href="cv/Parvez_Hossen_CV_Backend_AI.pdf">AI</a> ·
+      <a href="cv/Parvez_Hossen_CV_FullStack.pdf">Full-stack</a> ·
+      <a href="cv/Parvez_Hossen_CV_Mobile.pdf">Mobile</a>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Parvez Hossen — Dhaka, Bangladesh.</span>
+      <nav><a href="mailto:ph.cse.bd@gmail.com">ph.cse.bd@gmail.com</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="backdrop" id="pm" role="dialog" aria-modal="true" aria-label="Project details">
+  <div class="modal"></div>
 </div>
 
 <script>
-  document.querySelectorAll('td.built').forEach(td => {
-    const go = () => document.getElementById(td.dataset.go)?.scrollIntoView({behavior:'smooth'});
-    td.addEventListener('click', go);
-    td.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();go();} });
+/* Project quick-view. Card click → Overview; action icon → that tab.
+   State lives in the URL hash (#p/<slug>/<tab>) so links are shareable
+   and the browser Back button closes the modal. */
+const PROJECTS = {
+  'bangladesh2024': {
+    title:'Bangladesh2024 Archive', kicker:'Public Archive · Open Source',
+    sub:'Lead backend developer — ~230 of the backend’s 255 commits.',
+    overview:[
+      'A permanent, bilingual public record of Bangladesh’s July–August 2024 movement — martyrs, injured, arrested, incidents, news, podcasts and protest graffiti. Anyone can submit a record; a moderation workflow reviews it; approved records join the searchable archive.',
+      'Every video becomes a 4-rendition adaptive HLS ladder on a CDN, and every photo gets a perceptual hash before a moderator ever sees it — so near-duplicate submissions of the same event cluster instead of flooding the queue.'
+    ],
+    built:[
+      '<b>The REST API</b> — 30+ models across 5 Django apps.',
+      '<b>Video pipeline</b> — Celery + FFmpeg transcoding to 4-rendition adaptive HLS on a CDN.',
+      '<b>Deduplication</b> — perceptual hashing with a Hamming-distance similarity graph.',
+      '<b>Moderation</b> — a polymorphic audit trail across all content types.',
+      '<b>Auth &amp; ingestion</b> — JWT + OTP, and Bengali-language bulk ETL.'
+    ],
+    stack:['Django','DRF','Celery','PostgreSQL','Redis','FFmpeg / HLS','Next.js 14','DO Spaces CDN'],
+    arch:[
+      {label:'Clients',  nodes:[{n:'Public archive',s:'Next.js 14',mine:1},{n:'Moderator dashboard',s:'Next.js 14',mine:1}]},
+      {label:'API',      nodes:[{n:'Django REST API',s:'30+ models · 5 apps',mine:1},{n:'JWT + OTP auth',s:'role-scoped permissions',mine:1}]},
+      {label:'Pipeline', nodes:[{n:'Celery + FFmpeg',s:'4-rendition HLS ladder',mine:1},{n:'pHash engine',s:'Hamming-distance graph',mine:1}]},
+      {label:'Data',     nodes:[{n:'PostgreSQL',s:'records · moderation history',mine:1},{n:'Redis',s:'queue + cache',mine:1}]},
+      {label:'Delivery', nodes:[{n:'DigitalOcean Spaces',s:'CDN origin',mine:0}]}
+    ],
+    flow:{src:'assets/img/bangladesh2024-workflow.webp', cap:'Submission → dedup → transcode → moderation → public archive.'},
+    screens:[],
+    links:[{label:'Live archive',href:'https://bangladesh2024.info/',primary:1},
+           {label:'Backend source',href:'https://github.com/Archive2024/Bangladesh2024-Backend'},
+           {label:'Frontend source',href:'https://github.com/Archive2024/Bangladesh2024-Frontend'}]
+  },
+
+  'victoria-express': {
+    title:'Victoria Express', kicker:'Courier &amp; Logistics',
+    sub:'One Django API, three clients — running a delivery business daily.',
+    overview:[
+      'Merchants book parcels from a Flutter app, riders pick up and track from a second app, and the operations team routes everything through a Next.js dashboard — all speaking to one Django API, with Celery workers handling dispatch and push notifications.',
+      'The hard part was not any single client; it was keeping one parcel lifecycle consistent across three of them while status changes arrive from riders with intermittent connectivity.'
+    ],
+    built:[
+      '<b>Both mobile apps</b> — merchant booking and rider delivery flows in Flutter.',
+      '<b>The ops dashboard</b> — parcel routing, rider assignment, pickup requests.',
+      '<b>The API</b> — DRF, parcel state machine, Celery dispatch, push notifications.'
+    ],
+    stack:['Django','DRF','PostgreSQL','Celery','Redis','Flutter','Next.js','Docker'],
+    arch:[
+      {label:'Clients',  nodes:[{n:'Merchant app',s:'Flutter',mine:1},{n:'Rider app',s:'Flutter',mine:1},{n:'Ops dashboard',s:'Next.js',mine:1}]},
+      {label:'API',      nodes:[{n:'Django REST API',s:'DRF · parcel state machine',mine:1}]},
+      {label:'Async',    nodes:[{n:'Celery workers',s:'dispatch · notifications',mine:1},{n:'Redis',s:'broker + cache',mine:1}]},
+      {label:'Data',     nodes:[{n:'PostgreSQL',s:'parcels · status history',mine:1}]}
+    ],
+    flow:{src:'assets/img/victoria-delivery-workflow.webp', cap:'Pickup request → rider assignment → hub transfer → delivery, across all three apps.'},
+    screens:[
+      {src:'assets/img/shots/victoria-admin-assign.webp',          cap:'Ops — assign rider'},
+      {src:'assets/img/shots/victoria-admin-pickups.webp',         cap:'Ops — pickup requests'},
+      {src:'assets/img/shots/victoria-merchant-dashboard.webp',    cap:'Merchant app — dashboard'},
+      {src:'assets/img/shots/victoria-merchant-add-parcel.webp',   cap:'Merchant app — add parcel'},
+      {src:'assets/img/shots/victoria-merchant-pickup.webp',       cap:'Merchant app — pickup request'},
+      {src:'assets/img/shots/victoria-rider-dashboard.webp',       cap:'Rider app — dashboard'},
+      {src:'assets/img/shots/victoria-rider-pickup.webp',          cap:'Rider app — pickup assigned'},
+      {src:'assets/img/shots/victoria-rider-order-details.webp',   cap:'Rider app — order details'},
+      {src:'assets/img/shots/victoria-rider-delivery.webp',        cap:'Rider app — delivery'}
+    ],
+    links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
+  },
+
+  'grocerai': {
+    title:'GrocerAI (Grocento)', kicker:'AI Commerce · RAG',
+    sub:'An LLM in the loop, kept outside the trust boundary.',
+    overview:[
+      'Grocery shopping with an assistant that recommends real products: retrieval and grounding run over the live product catalogue with embeddings and vector search, so suggestions map to items actually in stock.',
+      'The interesting problem isn’t the model call — it’s what the system does when the model is confidently wrong. The RAG layer decides what the model sees, and a guardrail turns every failure into a typed error the client can render.'
+    ],
+    built:[
+      '<b>The storefront</b> — Flutter app with WebSocket progress streaming.',
+      '<b>The API</b> — Django, catalogue, cart and order flows.',
+      '<b>The RAG layer</b> — pgvector retrieval, grounding, typed error handling.'
+    ],
+    stack:['Django','pgvector','PostgreSQL','Embeddings','WebSockets','Flutter','Celery'],
+    arch:[
+      {label:'Client',   nodes:[{n:'Storefront',s:'Flutter',mine:1}]},
+      {label:'API',      nodes:[{n:'Django API',s:'catalogue · cart · orders',mine:1}]},
+      {label:'AI layer', nodes:[{n:'RAG retrieval',s:'embeddings · grounding',mine:1},{n:'Guardrail',s:'typed errors · fallbacks',mine:1}]},
+      {label:'Data',     nodes:[{n:'PostgreSQL + pgvector',s:'catalogue · embeddings',mine:1}]},
+      {label:'External', nodes:[{n:'LLM provider',s:'outside the trust boundary',mine:0}]}
+    ],
+    flow:{src:'assets/img/grocerai-user-flow.webp', cap:'Preferences → AI cart building → grocer comparison → checkout.'},
+    screens:[
+      {src:'assets/img/shots/grocerai-preferences.webp', cap:'Preferences'},
+      {src:'assets/img/shots/grocerai-dashboard.webp',   cap:'Home / dashboard'},
+      {src:'assets/img/shots/grocerai-new-order.webp',   cap:'New order'},
+      {src:'assets/img/shots/grocerai-agent.webp',       cap:'Assistant — finding groceries'},
+      {src:'assets/img/shots/grocerai-cart.webp',        cap:'Compare grocers'},
+      {src:'assets/img/shots/grocerai-checkout.webp',    cap:'Checkout'}
+    ],
+    links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
+  },
+
+  'jonnobhumi': {
+    title:'Jonnobhumi', kicker:'Property Transactions',
+    sub:'A permission model and an audit trail the application cannot rewrite.',
+    overview:[
+      'Listings and transactions across separate user and admin frontends, on a Django API.',
+      'The part I’d defend in a design review: a policy-based authorization engine — 11 roles, 57 permissions, DENY-wins evaluation, Redis-cached — and an audit trail recording actor, before/after diffs, IP and request ID, made tamper-proof by a PostgreSQL trigger so the record survives a compromised application path.'
+    ],
+    built:[
+      '<b>Both frontends</b> — user site and admin site in Next.js + TypeScript.',
+      '<b>The API</b> — DRF, listings, transaction lifecycle.',
+      '<b>Authz + audit</b> — policy engine, Redis cache, append-only trigger-backed log.'
+    ],
+    stack:['Django','DRF','PostgreSQL triggers','Redis','Next.js','TypeScript','Celery','Docker'],
+    arch:[
+      {label:'Clients', nodes:[{n:'User site',s:'Next.js',mine:1},{n:'Admin site',s:'Next.js',mine:1}]},
+      {label:'API',     nodes:[{n:'Django REST API',s:'listings · transactions',mine:1}]},
+      {label:'Policy',  nodes:[{n:'Authorization engine',s:'11 roles · 57 perms · DENY-wins',mine:1},{n:'Redis',s:'decision cache',mine:1}]},
+      {label:'Data',    nodes:[{n:'PostgreSQL',s:'application tables',mine:1},{n:'Audit log',s:'append-only · pg trigger',mine:1}]}
+    ],
+    flow:{src:'assets/img/jonnobhumi-workflow.webp', cap:'Listing → blacklist screening → due diligence → role-gated sign-off → verified report.'},
+    screens:[],
+    links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
+  },
+
+  'mph': {
+    title:'MPH', kicker:'B2B Warehouse',
+    sub:'A 10× backend redesign that reports on itself.',
+    overview:[
+      'Inventory and order management for a B2B warehouse. I redesigned the Django/PostgreSQL backend for a 10× performance improvement and moved search off naive filtering onto generated tsvector columns with weighted GIN indexes.',
+      'Prometheus and Grafana are wired in so the system reports on itself — regressions surface on a dashboard, not in a support ticket.'
+    ],
+    built:[
+      '<b>API redesign</b> — query paths and N+1 elimination, 10× faster.',
+      '<b>Search</b> — generated tsvector columns, weighted GIN indexes.',
+      '<b>Observability</b> — Prometheus metrics, Grafana dashboards.',
+      '<b>Admin frontend</b> — Next.js inventory and order screens.'
+    ],
+    stack:['Django','PostgreSQL FTS','GIN indexes','Prometheus','Grafana','Next.js','Docker'],
+    arch:[
+      {label:'Client',        nodes:[{n:'Admin frontend',s:'Next.js',mine:1}]},
+      {label:'API',           nodes:[{n:'Django API',s:'redesigned query paths',mine:1}]},
+      {label:'Search',        nodes:[{n:'Full-text search',s:'tsvector · weighted GIN',mine:1}]},
+      {label:'Data',          nodes:[{n:'PostgreSQL',s:'inventory · orders',mine:1}]},
+      {label:'Observability', nodes:[{n:'Prometheus',s:'metrics',mine:1},{n:'Grafana',s:'dashboards + alerts',mine:1}]}
+    ],
+    screens:[],
+    links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
+  }
+};
+
+const backdrop = document.getElementById('pm');
+const modal    = backdrop.querySelector('.modal');
+let lastFocus  = null;
+
+function tabsFor(p){
+  const t = [['overview','Overview'],['arch','System design']];
+  if (p.flow) t.push(['flow','Workflow']);
+  if (p.screens.length) t.push(['screens','Screens']);
+  return t;
+}
+
+function renderTab(p, key){
+  if (key === 'arch') return `
+    <p class="m-note">Blue blocks are layers I designed and built.</p>
+    <div class="arch">${p.arch.map((r,i) => `
+      <div class="arch-row"><h6>${r.label}</h6><div class="arch-nodes">${
+        r.nodes.map(n => `<div class="node${n.mine?' mine':''}"><b>${n.n}</b><small>${n.s}</small></div>`).join('')
+      }</div></div>${i < p.arch.length-1 ? '<div class="arch-arrow">&#8595;</div>' : ''}`).join('')}
+    </div>`;
+  if (key === 'flow') return `
+    <p class="m-note">${p.flow.cap}</p>
+    <div class="flow"><img src="${p.flow.src}" alt="${p.title} workflow" loading="lazy"></div>`;
+  if (key === 'screens') return `
+    <div class="gal">${p.screens.map(s =>
+      `<figure><img src="${s.src}" alt="${s.cap}" loading="lazy"><figcaption>${s.cap}</figcaption></figure>`
+    ).join('')}</div>`;
+  return `
+    ${p.overview.map(x => `<p>${x}</p>`).join('')}
+    <h4 class="m-sub">What I built</h4>
+    <ul class="m-list">${p.built.map(x => `<li>${x}</li>`).join('')}</ul>
+    <h4 class="m-sub">Stack</h4>
+    <div class="pills">${p.stack.map(s => `<span>${s}</span>`).join('')}</div>`;
+}
+
+function render(slug, tab){
+  const p = PROJECTS[slug], tabs = tabsFor(p);
+  if (!tabs.some(t => t[0] === tab)) tab = 'overview';
+  modal.innerHTML = `
+    <div class="m-head">
+      <button class="m-close" aria-label="Close">&times;</button>
+      <span class="chip">${p.kicker}</span>
+      <h3>${p.title}</h3>
+      <p class="m-sublede">${p.sub}</p>
+    </div>
+    <div class="m-tabs" role="tablist">${tabs.map(([k,l]) =>
+      `<button class="m-tab" role="tab" data-tab="${k}" aria-selected="${k===tab}">${l}</button>`).join('')}
+    </div>
+    <div class="m-body">${renderTab(p, tab)}</div>
+    <div class="m-foot">${p.links.map(l =>
+      `<a class="btn ${l.primary?'btn-primary':'btn-ghost'}" href="${l.href}"${l.href.startsWith('http')?' target="_blank" rel="noopener"':''}>${l.label}</a>`).join('')}
+    </div>`;
+  if (!backdrop.classList.contains('open')){
+    lastFocus = document.activeElement;
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  backdrop.scrollTop = 0;
+  modal.querySelector('.m-close').focus();
+}
+
+function hide(){
+  if (!backdrop.classList.contains('open')) return;
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+function close(){ if (location.hash.startsWith('#p/')) location.hash = 'projects'; else hide(); }
+
+function route(){
+  const m = /^#p\/([\w-]+)\/([\w-]+)/.exec(location.hash);
+  if (m && PROJECTS[m[1]]) render(m[1], m[2]); else hide();
+}
+const go = (slug, tab) => { location.hash = `p/${slug}/${tab}`; };
+
+addEventListener('hashchange', route);
+
+document.querySelectorAll('.proj').forEach(card => {
+  const slug = card.dataset.project;
+  card.addEventListener('click', () => go(slug, 'overview'));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(slug, 'overview'); }
   });
+  card.querySelectorAll('.icon-btn').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); go(slug, btn.dataset.tab); });
+  });
+});
+
+modal.addEventListener('click', e => {
+  if (e.target.closest('.m-close')) return close();
+  const tab = e.target.closest('.m-tab');
+  if (tab){
+    const m = /^#p\/([\w-]+)/.exec(location.hash);
+    if (m) go(m[1], tab.dataset.tab);
+  }
+});
+backdrop.addEventListener('click', e => { if (e.target === backdrop) close(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+route();
 </script>
+
 </body>
 </html>

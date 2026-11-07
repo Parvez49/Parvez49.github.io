@@ -115,6 +115,8 @@ a:focus-visible,button:focus-visible,article:focus-visible{outline:2px solid var
   transition:transform .22s ease,border-color .22s ease}
 .proj:hover{transform:translateY(-4px);border-color:var(--line-2)}
 .proj-wide{grid-column:1 / -1;display:grid;grid-template-columns:1.05fr 1fr}
+.proj.is-hidden{display:none}
+.load-more{display:flex;justify-content:center;margin-top:34px}
 .shot{position:relative;height:250px;overflow:hidden;background:#05070c;border-bottom:1px solid rgba(255,255,255,.04)}
 .proj-wide .shot{height:100%;min-height:330px;border-bottom:0;border-right:1px solid rgba(255,255,255,.04)}
 .shot>img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(.74) contrast(1.06) saturate(.72)}
@@ -397,30 +399,29 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
 <section id="projects" class="wrap">
   <div class="sec-head">
     <h2>Recent Projects</h2>
-    <p>Five of them in detail — a public human-rights archive, logistics, AI commerce,
-      property transactions and warehouse operations.</p>
+    <p>Six of them in detail — property transactions, logistics, B2B sourcing,
+      AI commerce, performance engineering, and a public human-rights archive.</p>
   </div>
 
   <div class="proj-grid">
 
-    <article class="proj proj-wide" data-project="bangladesh2024" tabindex="0" role="button" aria-label="Open Bangladesh2024 Archive details">
+    <article class="proj" data-project="jonnobhumi" tabindex="0" role="button" aria-label="Open Jonnobhumi details">
       <div class="shot shot-mock">
         <div class="shot-bar"><i></i><i></i><i></i></div>
         <div class="mockui">
-          <h5>Adaptive video pipeline</h5>
-          <p>Celery + FFmpeg → 4-rendition HLS on a CDN · pHash dedup</p>
+          <h5>Authorization engine</h5>
+          <p>11 roles · 57 permissions · DENY-wins · Redis-cached</p>
           <div class="rows"><i></i><i></i><i></i><i></i></div>
-          <span class="pill">Open source</span>
+          <span class="pill">Append-only audit log</span>
         </div>
       </div>
       <div class="proj-body">
-        <span class="chip" style="align-self:flex-start">Public Archive · Open Source</span>
-        <h3>Bangladesh2024 Archive</h3>
-        <p>A permanent, bilingual public record of Bangladesh's July–August 2024 movement — martyrs,
-          injured, arrested, incidents, news and protest graffiti. Anyone can submit a record; a
-          moderation workflow reviews it; approved records join the searchable archive. I wrote ~230
-          of the backend's 255 commits as lead backend developer.</p>
-        <span class="built">Built: the REST API (30+ models), the Celery + FFmpeg HLS pipeline, perceptual-hash dedup, the moderation audit trail, JWT + OTP auth and Bengali bulk ETL.</span>
+        <span class="chip">Property Transactions</span>
+        <h3>Jonnobhumi</h3>
+        <p>Separate user and admin frontends over a policy-based authorization engine — 11 roles,
+          57 permissions, DENY-wins, Redis-cached — with an audit trail made tamper-proof by a
+          PostgreSQL trigger so the record survives a compromised application path.</p>
+        <span class="built">Built: both frontends, the API, and the authorization/audit subsystem.</span>
         <div class="proj-actions">
           <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
           <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
@@ -450,6 +451,30 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
       </div>
     </article>
 
+    <article class="proj" data-project="merchantbay" tabindex="0" role="button" aria-label="Open Merchantbay details">
+      <div class="shot shot-mock">
+        <div class="shot-bar"><i></i><i></i><i></i></div>
+        <div class="mockui">
+          <h5>Warehouse Management System</h5>
+          <p>Purchase planning · stock entry · unit conversion</p>
+          <div class="rows"><i></i><i></i><i></i><i></i></div>
+          <span class="pill">Django · DRF · PostgreSQL</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <span class="chip">B2B Sourcing Platform</span>
+        <h3>Merchantbay</h3>
+        <p>Warehouse and procurement modules for a B2B sourcing platform — requisition-to-purchase-order
+          flows, stock entry, inventory tracking, and a unit-conversion layer that reconciles every
+          unit back to one base unit across reports.</p>
+        <span class="built">Built: the purchase-planning, inventory and unit-conversion modules, plus an AI fashion sourcing service.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
+
     <article class="proj" data-project="grocerai" tabindex="0" role="button" aria-label="Open GrocerAI details">
       <div class="shot shot-mobile">
         <div class="phones">
@@ -472,32 +497,7 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
       </div>
     </article>
 
-    <article class="proj" data-project="jonnobhumi" tabindex="0" role="button" aria-label="Open Jonnobhumi details">
-      <div class="shot shot-mock">
-        <div class="shot-bar"><i></i><i></i><i></i></div>
-        <div class="mockui">
-          <h5>Authorization engine</h5>
-          <p>11 roles · 57 permissions · DENY-wins · Redis-cached</p>
-          <div class="rows"><i></i><i></i><i></i><i></i></div>
-          <span class="pill">Append-only audit log</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <span class="chip">Property Transactions</span>
-        <h3>Jonnobhumi</h3>
-        <p>Separate user and admin frontends over a policy-based authorization engine — 11 roles,
-          57 permissions, DENY-wins, Redis-cached — with an audit trail made tamper-proof by a
-          PostgreSQL trigger so the record survives a compromised application path.</p>
-        <span class="built">Built: both frontends, the API, and the authorization/audit subsystem.</span>
-        <div class="proj-actions">
-          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
-          <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
-          <span class="open-hint">Open →</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj" data-project="mph" tabindex="0" role="button" aria-label="Open MPH details">
+    <article class="proj" data-project="adzi-trims" tabindex="0" role="button" aria-label="Open Adzi Trims details">
       <div class="shot shot-mock">
         <div class="shot-bar"><i></i><i></i><i></i></div>
         <div class="mockui">
@@ -509,13 +509,38 @@ footer{margin-top:90px;padding:70px 0 28px;background:linear-gradient(180deg,#0a
       </div>
       <div class="proj-body">
         <span class="chip">B2B Warehouse</span>
-        <h3>MPH</h3>
+        <h3>Adzi Trims</h3>
         <p>Inventory and order management for a B2B warehouse. I redesigned the Django/PostgreSQL
           backend for a 10× performance improvement, moved search to generated tsvector columns with
           weighted GIN indexes, and wired in Prometheus and Grafana so the system reports on itself.</p>
-        <span class="built">Built: API redesign, search, observability, admin frontend.</span>
+        <span class="built">Built: API redesign, search, observability; collaborated on the React frontend.</span>
         <div class="proj-actions">
           <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <span class="open-hint">Open →</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-project="bangladesh2024" tabindex="0" role="button" aria-label="Open Bangladesh2024 Archive details">
+      <div class="shot shot-mock">
+        <div class="shot-bar"><i></i><i></i><i></i></div>
+        <div class="mockui">
+          <h5>Adaptive video pipeline</h5>
+          <p>Celery + FFmpeg → 4-rendition HLS on a CDN · pHash dedup</p>
+          <div class="rows"><i></i><i></i><i></i><i></i></div>
+          <span class="pill">Open source</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <span class="chip">Public Archive · Open Source</span>
+        <h3>Bangladesh2024 Archive</h3>
+        <p>A permanent, bilingual public record of Bangladesh’s July–August 2024 movement. Anyone can
+          submit a record; a moderation workflow reviews it; approved records join the searchable
+          archive. I wrote ~230 of the backend’s 255 commits as lead backend developer.</p>
+        <span class="built">Built: the REST API (30+ models), the Celery + FFmpeg HLS pipeline, perceptual-hash dedup, the moderation audit trail, JWT + OTP auth and Bengali bulk ETL.</span>
+        <div class="proj-actions">
+          <button class="icon-btn" data-tab="arch" data-tip="System design" aria-label="System design"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1.4"/><rect x="2" y="17" width="6" height="5" rx="1.4"/><rect x="16" y="17" width="6" height="5" rx="1.4"/><path d="M12 7v4M5 17v-3h14v3"/></svg></button>
+          <button class="icon-btn" data-tab="flow" data-tip="Workflow" aria-label="Workflow"><svg viewBox="0 0 24 24"><path d="M3 6h7M3 12h18M3 18h11"/><circle cx="18" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/></svg></button>
           <span class="open-hint">Open →</span>
         </div>
       </div>
@@ -784,6 +809,29 @@ const PROJECTS = {
     links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
   },
 
+  'merchantbay': {
+    title:'Merchantbay', kicker:'B2B Sourcing Platform',
+    sub:'Warehouse and procurement modules for a B2B sourcing platform.',
+    overview:[
+      'Warehouse and procurement modules for Merchantbay’s B2B sourcing platform, built on Django/DRF and PostgreSQL — the operational core the sourcing business runs its stock on.',
+      'Alongside the warehouse system I built an AI fashion sourcing service: FastAPI with RAG retrieval over the product corpus behind a Streamlit interface, so buyer queries return grounded matches from the live catalogue.'
+    ],
+    built:[
+      '<b>Purchase planning &amp; procurement</b> — requisition-to-purchase-order flows with supplier, quantity and lead-time validation at the serializer layer.',
+      '<b>Stock entry &amp; inventory tracking</b> — with a unit-conversion layer, so items bought, stored and sold in different units reconcile to one base unit across every report.',
+      '<b>AI fashion sourcing</b> — FastAPI service, RAG retrieval over the product corpus, Streamlit interface.'
+    ],
+    stack:['Django','DRF','PostgreSQL','FastAPI','RAG','Embeddings','Streamlit'],
+    arch:[
+      {label:'Modules',     nodes:[{n:'Purchase planning',s:'requisition → PO',mine:1},{n:'Stock entry',s:'goods in / out',mine:1},{n:'Inventory tracking',s:'live stock levels',mine:1},{n:'Unit conversion',s:'one base unit',mine:1}]},
+      {label:'API',         nodes:[{n:'Django REST Framework',s:'warehouse + procurement',mine:1}]},
+      {label:'Data',        nodes:[{n:'PostgreSQL',s:'stock · suppliers · orders',mine:1}]},
+      {label:'AI sourcing', nodes:[{n:'FastAPI service',s:'RAG retrieval',mine:1},{n:'Streamlit',s:'buyer interface',mine:1}]}
+    ],
+    screens:[],
+    links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
+  },
+
   'grocerai': {
     title:'GrocerAI (Grocento)', kicker:'AI Commerce · RAG',
     sub:'An LLM in the loop, kept outside the trust boundary.',
@@ -840,22 +888,22 @@ const PROJECTS = {
     links:[{label:'Get in touch',href:'mailto:ph.cse.bd@gmail.com',primary:1}]
   },
 
-  'mph': {
-    title:'MPH', kicker:'B2B Warehouse',
+  'adzi-trims': {
+    title:'Adzi Trims', kicker:'B2B Warehouse',
     sub:'A 10× backend redesign that reports on itself.',
     overview:[
-      'Inventory and order management for a B2B warehouse. I redesigned the Django/PostgreSQL backend for a 10× performance improvement and moved search off naive filtering onto generated tsvector columns with weighted GIN indexes.',
+      'Inventory and order management for a B2B warehouse at Adzi Trims Limited. I redesigned the Django/PostgreSQL backend for a 10× performance improvement and moved search off naive filtering onto generated tsvector columns with weighted GIN indexes.',
       'Prometheus and Grafana are wired in so the system reports on itself — regressions surface on a dashboard, not in a support ticket.'
     ],
     built:[
       '<b>API redesign</b> — query paths and N+1 elimination, 10× faster.',
       '<b>Search</b> — generated tsvector columns, weighted GIN indexes.',
       '<b>Observability</b> — Prometheus metrics, Grafana dashboards.',
-      '<b>Admin frontend</b> — Next.js inventory and order screens.'
+      '<b>Frontend</b> — collaborated on the React frontend for the inventory and order screens.'
     ],
-    stack:['Django','PostgreSQL FTS','GIN indexes','Prometheus','Grafana','Next.js','Docker'],
+    stack:['Django','DRF','PostgreSQL FTS','GIN indexes','Prometheus','Grafana','React'],
     arch:[
-      {label:'Client',        nodes:[{n:'Admin frontend',s:'Next.js',mine:1}]},
+      {label:'Client',        nodes:[{n:'Admin frontend',s:'React',mine:1}]},
       {label:'API',           nodes:[{n:'Django API',s:'redesigned query paths',mine:1}]},
       {label:'Search',        nodes:[{n:'Full-text search',s:'tsvector · weighted GIN',mine:1}]},
       {label:'Data',          nodes:[{n:'PostgreSQL',s:'inventory · orders',mine:1}]},
@@ -902,6 +950,8 @@ function renderTab(p, key){
 
 function render(slug, tab){
   const p = PROJECTS[slug], tabs = tabsFor(p);
+  const card = document.querySelector(`.proj[data-project="${slug}"]`);
+  if (card && card.classList.contains('is-hidden')) revealAll();
   if (!tabs.some(t => t[0] === tab)) tab = 'overview';
   modal.innerHTML = `
     <div class="m-head">
@@ -961,6 +1011,25 @@ modal.addEventListener('click', e => {
     if (m) go(m[1], tab.dataset.tab);
   }
 });
+/* Show the first 4 cards, reveal the rest on demand. Applied in JS so the
+   full grid is still in the HTML for crawlers and no-JS visitors. */
+const INITIAL = 4;
+function revealAll(){
+  document.querySelectorAll('.proj.is-hidden').forEach(c => c.classList.remove('is-hidden'));
+  const b = document.querySelector('.load-more'); if (b) b.remove();
+}
+(function(){
+  const grid = document.querySelector('.proj-grid');
+  const cards = Array.from(grid.querySelectorAll('.proj'));
+  if (cards.length <= INITIAL) return;
+  cards.slice(INITIAL).forEach(c => c.classList.add('is-hidden'));
+  const wrap = document.createElement('div');
+  wrap.className = 'load-more';
+  wrap.innerHTML = `<button class="btn btn-ghost">Show ${cards.length - INITIAL} more projects</button>`;
+  grid.after(wrap);
+  wrap.querySelector('button').addEventListener('click', revealAll);
+})();
+
 backdrop.addEventListener('click', e => { if (e.target === backdrop) close(); });
 addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
